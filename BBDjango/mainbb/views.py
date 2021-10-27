@@ -7,7 +7,7 @@ from django.http import HttpResponse
 def index(request):
   return render(request,"index.html")
 
-def donor(request):
+def donor_home(request):
   return render(request,"donor-home.html")
 
 def donor_donate(request):
