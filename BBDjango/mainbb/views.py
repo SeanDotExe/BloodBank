@@ -15,3 +15,6 @@ def donor_donate(request):
 
 def donor_request(request):
   return render(request,"donor-request.html")
+
+def donor_account(request):
+  return render(request,"donor-account.html")
