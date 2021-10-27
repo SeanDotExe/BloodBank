@@ -7,5 +7,11 @@ from django.http import HttpResponse
 def index(request):
   return render(request,"index.html")
 
-def admin(request):
-  return render(request,"adminlogin.html")
+def donor(request):
+  return render(request,"donor-home.html")
+
+def donor_donate(request):
+  return render(request,"donor-donate.html")
+
+def donor_request(request):
+  return render(request,"donor-request.html")
