@@ -11,6 +11,9 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
+SETTINGS_PATH = os.pathdirname(os.path.dirname(__file__))
+templates = [{'DIRS':[os.path.join(SETTING_PATH, 'templates')]}]
+INSTALLED_APPS = ['mainbb',]
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
