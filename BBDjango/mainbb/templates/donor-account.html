@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Blood Bank</title>
+    <link rel="shortcut icon" href="assets/images/fav.png" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@800&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="assets/images/fav.jpg">
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/fontawsom-all.min.css">
+    <link rel="stylesheet" href="assets/plugins/grid-gallery/css/grid-gallery.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css" />
+    <link rel="icon" href="assets/images/log.png">
+</head>
+
+<body>
+    <header class="continer-fluid ">
+        <div class="header-top">
+            <div class="container">
+                <div class="row col-det">
+                    <div class="col-lg-6 d-none d-lg-block">
+                        <ul class="ulleft">
+                            <li>
+                                <i class="far fa-envelope"></i>
+                                bloodbank@gmail.com
+                                <span>|</span></li>
+                            <li>
+                                <i class="far fa-clock"></i>
+                                Service Time : 8:00 AM - 5:00 PM</li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-6 col-md-12">
+                        <ul class="ulright">                   
+                            <li>
+                                <a type="button" href="index.html" class="btn btn-outline-success otherh btn-sm"><i class="fas fa-sign-out-alt"></i>Logout</a>
+                            </li>
+                            
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="menu-jk" class="header-bottom">
+            <div class="container">
+                <div class="row nav-row">
+                    <div class="col-md-3 logo">
+                        <img src="assets/images/logo.jpg" alt="">
+                    </div>
+                    <div class="col-md-9 nav-col">
+                        <nav class="navbar navbar-expand-lg navbar-light">
+
+                            <button
+                                class="navbar-toggler"
+                                type="button"
+                                data-toggle="collapse"
+                                data-target="#navbarNav"
+                                aria-controls="navbarNav"
+                                aria-expanded="false"
+                                aria-label="Toggle navigation">
+                                <span class="navbar-toggler-icon"></span>
+                            </button>
+                            <div class="collapse navbar-collapse" id="navbarNav">
+                                <ul class="navbar-nav">
+                                    <li class="nav-item zoom">
+                                        <a class="nav-link" href="donor-home.html">Home
+                                        </a>
+                                    </li>
+                                    <li class="nav-item zoom">
+                                        <a class="nav-link" href="donor-home.html#process">Process</a>
+                                    </li>
+                                    <li class="nav-item zoom">
+                                        <a class="nav-link" href="donor-donate.html">Donate Now</a>
+                                    </li>   
+                                    <li class="nav-item zoom">
+                                        <a class="nav-link" href="donor-request.html">Request Blood</a>
+                                    <li class="nav-item zoom active">
+                                        <a class="nav-link" href="#">My Account</a>
+                                    </li>   
+                                    </li>          
+                                </ul>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+<div class="container marginn">
+    <div class="row">
+        <div class="col-sm-3">
+            <div class="card text-center bg-light">
+                <div class="card-body">
+                    <div class="blood">
+                        <i class="fas fa-user-plus fa-3x" style="color: #1e88e5;"></i>
+                    </div><br>
+                    <div>
+                        Request Made <br>
+                        6
+                    </div>                            
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="card text-center bg-light">
+                <div class="card-body">
+                    <div class="blood">
+                    <i class="fas fa-sync fa-3x" style="color:#efb000;"></i>
+                    </div><br>
+                    <div>
+                        Pending Request <br>
+                        1
+                    </div>                            
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="card text-center bg-light">
+                <div class="card-body">
+                    <div class="blood">
+                        <i class="fas fa-check-circle fa-3x" style="color: green;"></i>
+                    </div><br>
+                    <div>
+                        Approved Request<br>
+                        4
+                    </div>                            
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="card text-center bg-light">
+                <div class="card-body">
+                    <div class="blood">
+                        <i class="fas fa-times-circle fa-3x" style="color: red;"></i>
+                    </div><br>
+                    <div>
+                        Rejected Request <br>
+                        1
+                    </div>                            
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container marginn">
+    <div class="card table-responsive">
+        <div class="card-header green">
+            My Donation History
+        </div>
+        <table class="table ">
+            <thead class="table-secondary">
+                <tr>
+                <th scope="col">#</th>
+                <th scope="col">Donor's Name</th>
+                <th scope="col">Blood Type</th>
+                <th scope="col">Unit (per bag)</th>
+                <th scope="col">Date</th>
+                <th scope="col">Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                <th scope="row">1</th>
+                <td>Sean Monacillo</td>
+                <td>O+</td>
+                <td>1</td>
+                <td>07/10/21</td>
+                <td><span class="label success">Approved</span></td>
+                </tr>
+                <tr>
+                <th scope="row">2</th>
+                <td>Sean Monacillo</td>
+                <td>O+</td>
+                <td>1</td>
+                <td>09/20/21</td>
+                <td><span class="label danger">Rejected</span></td>
+                </tr>
+                <tr>
+                <th scope="row">3</th>
+                <td>Michael Angelo Rilan</td>
+                <td>B+</td>
+                <td>2</td>
+                <td>12/28/21</td>
+                <td><span class="label info">Pending</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="card marginn table-responsive">
+        <div class="card-header green">
+            My Request History
+        </div>
+        <table class="table">
+            <thead class="table-secondary">
+                <tr>
+                <th scope="col">#</th>
+                <th scope="col">Patient's Name</th>
+                <th scope="col">Blood Type</th>
+                <th scope="col">Unit (per bag)</th>
+                <th scope="col">Date</th>
+                <th scope="col">Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                <th scope="row">1</th>
+                <td>Nigelle Jarred Salvador</td>
+                <td>AB-</td>
+                <td>2</td>
+                <td>07/27/21</td>
+                <td><span class="label success">Approved</span></td>
+                </tr>
+                <tr>
+                <th scope="row">2</th>
+                <td>Nigelle Jarred Salvador</td>
+                <td>AB-</td>
+                <td>1</td>
+                <td>07/27/21</td>
+                <td><span class="label success">Approved</span></td>
+                </tr>
+                <tr>
+                <th scope="row">3</th>
+                <td>Sean Monacillo</td>
+                <td>AB-</td>
+                <td>1</td>
+                <td>07/27/21</td>
+                <td><span class="label success">Approved</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="container marginn ">
+    <div class="card">
+        <div class="card-header red">
+            Change Password
+        </div>
+        <div class="card-body black ">
+            <div class="card">
+                <div class="card-body">
+                    <form>
+                        <div class="form-group col-md">
+                            <label for="inputPassword">Old Password</label>
+                            <input type="password" class="form-control" id="inputpass" placeholder="Enter old password">
+                        </div>
+                        <div class="form-group col-md">
+                            <label for="inputPassword">New Password</label>
+                            <input type="password" class="form-control" id="inputpass" placeholder="Enter new password">
+                        </div>
+                        <div class="form-group col-md">
+                            <label for="inputPassword">Confirm Password</label>
+                            <input type="password" class="form-control" id="inputpass" placeholder="Enter confirm password">
+                        </div>
+                        <button type="submit" class="btn btn-danger btn-block hov">Submit Form</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <footer id="contact" class="container-fluid">
+        <div class="container">
+            <div class="footer-copy">
+                <div class="row">
+                    <div class="col-lg-8 col-md-6">
+                        <p>Copyright © <a href="#">BloodBank.com</a> | All right reserved.</p>
+                    </div>
+                    <div class="col-lg-4 col-md-6 socila-link">
+                        <ul>
+                            <li><a><i class="fab fa-github"></i></a></li>
+                            <li><a><i class="fab fa-google-plus-g"></i></a></li>
+                            <li><a><i class="fab fa-pinterest-p"></i></a></li>
+                            <li><a><i class="fab fa-twitter"></i></a></li>
+                            <li><a><i class="fab fa-facebook-f"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+    <script src="assets/js/jquery-3.2.1.min.js"></script>
+    <script src="assets/js/popper.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/plugins/grid-gallery/js/grid-gallery.min.js"></script>
+    <script src="assets/plugins/scroll-fixed/jquery-scrolltofixed-min.js"></script>
+    <script src="assets/js/script.js"></script>
+    
+</html>
