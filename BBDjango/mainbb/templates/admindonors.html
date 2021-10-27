@@ -1,0 +1,407 @@
+<<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Blood Bank</title>
+    <link rel="shortcut icon" href="assets/images/fav.png" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@800&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="assets/images/fav.jpg">
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/fontawsom-all.min.css">
+    <link rel="stylesheet" href="assets/plugins/grid-gallery/css/grid-gallery.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css" />
+    <link rel="icon" href="assets/images/log.png">
+</head>
+
+<body>
+    <header class="continer-fluid ">
+        <div class="header-top">
+            <div class="container">
+                <div class="row col-det">
+                    <div class="col-lg-6 d-none d-lg-block">
+                        <ul class="ulleft">
+                            <li id = name>
+                                <i></i>
+                                Hi Michael Angelo S. Rilan!
+                                </li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-6 col-md-12">
+                        <ul class="ulright">                   
+                            <li>
+                                <a type="button" href="adminlogin.html" class="btn btn-outline-success otherh btn-sm"><i class="fas fa-sign-out-alt"></i>Logout</a>
+                            </li>
+                            
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="menu-jk" class="header-bottom">
+            <div class="container">
+                <div class="row nav-row">
+                    <div class="col-md-3 logo">
+                        <img src="assets/images/logo.jpg" alt="">
+                    </div>
+                    <div class="col-md-9 nav-col">
+                        <nav class="navbar navbar-expand-lg navbar-light">
+
+                            <button
+                                class="navbar-toggler"
+                                type="button"
+                                data-toggle="collapse"
+                                data-target="#navbarNav"
+                                aria-controls="navbarNav"
+                                aria-expanded="false"
+                                aria-label="Toggle navigation">
+                                <span class="navbar-toggler-icon"></span>
+                            </button>
+                            <div class="collapse navbar-collapse" id="navbarNav">
+                                <ul class="navbar-nav">
+                                    <li class="nav-item zoom ">
+                                        <a class="nav-link" href="adminaccess.html">Dashboard
+                                        </a>
+                                    </li>
+                                    <li class="nav-item zoom">
+                                        <a class="nav-link" href="adminpatient.html">Patients</a>
+                                    </li>
+                                    <li class="nav-item zoom active">
+                                        <a class="nav-link" href="admindonors.html">Donors</a>
+                                    </li>           
+                                </ul>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+<div class="container marginn">
+    <h4>Activity Counter</h4>
+    <div class="row">
+        <div class="col-sm-3">
+            <div class="card text-center bg-light">
+                <div class="card-body">
+                    <div class="blood">
+                    <i class="fas fa-sync fa-3x" style="color:#efb000;"></i>
+                    </div><br>
+                    <div>
+                        Pending Donors <br>
+                        3
+                    </div>                            
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="card text-center bg-light">
+                <div class="card-body">
+                    <div class="blood">
+                        <i class="fas fa-check-circle fa-3x" style="color: green;"></i>
+                    </div><br>
+                    <div>
+                        Approved Donors<br>
+                        0
+                    </div>                            
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="card text-center bg-light">
+                <div class="card-body">
+                    <div class="blood">
+                        <i class="fas fa-times-circle fa-3x" style="color: red;"></i>
+                    </div><br>
+                    <div>
+                        Rejected Donors <br>
+                        0
+                    </div>                            
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container marginn">
+    <div id="pending_donor" class="table-responsive text-nowrap">
+        <div class="card-header green">
+            Pending Donors
+        </div>
+        <table id="tableaccessrequest" class = "table table-hover table-sm" >
+            <thead class="black white-text">
+                <tr>
+
+                    <th class="text-center" style="color: white;" scope = "col">ID</th>
+                    <th class="text-center" style="color: white;" scope = "col">Fullname</th>
+                    <th class="text-center" style="color: white;" scope = "col">Weight</th>
+                    <th class="text-center" style="color: white;" scope = "col">Age</th>
+                    <th class="text-center" style="color: white;" scope = "col">Blood Type</th>
+                    <th class="text-center" style="color: white;" scope = "col">Unit(per bags)</th>
+                    <th class="text-center" style="color: white;" scope = "col">Diseases(if any)</th>
+                    <th class="text-center" style="color: white;" scope = "col">Date Accepted</th>
+                    <th class="text-center" style="color: white;" colspan="1" scope = "col">Screening</th>
+                    <th class="text-center" style="color: white;" colspan="2" scope = "col">Decision</th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+            
+                <tr class = "text-center">
+                    <td>6</td>
+                    <td>Michael Angelo S Rilan</td>
+                    <td>68 kgs</td>
+                    <td>22</td>
+                    <td>B+</td>
+                    <td>2</td>
+                    <td>N/A</td>
+                    <td>October 02, 2021</td>
+                    <center>
+                    <td class="text-center">
+                        <a href="#" class="btn badge-success p-2" data-toggle="modal" data-target="#start_screening">Start</a>
+                    </td>
+                    </center>
+                    <center>
+                        <td class="text-center">
+                        <a href="#" class="btn badge-success p-2">Accept</a>
+                        <a href="#" class="btn badge-danger p-2" >Reject</a>
+                        </td>
+                    </center>
+
+                    </tr>
+                    <tr class = "text-center">
+                        <td>10</td>
+                        <td>Nigelle Jarred Salvador</td>
+                        <td>58 kgs</td>
+                        <td>22</td>
+                        <td>B+</td>
+                        <td>2</td>
+                        <td>N/A</td>
+                        <td>October 04, 2021</td>
+                        <center>
+                        <td class="text-center">
+                            <a href="#" class="btn badge-success p-2" data-toggle="modal" data-target="#start_screening">Start</a>
+                        </td>
+                        </center>
+                        <center>
+                            <td class="text-center">
+                            <a href="#" class="btn badge-success p-2">Accept</a>
+                            <a href="#" class="btn badge-danger p-2" >Reject</a>
+                            </td>
+                        </center>
+    
+                        </tr>
+
+                        <tr class = "text-center">
+                            <td>12</td>
+                            <td>Sean Monacillo</td>
+                            <td>56 kgs</td>
+                            <td>22</td>
+                            <td>B+</td>
+                            <td>2</td>
+                            <td>N/A</td>
+                            <td>October 05, 2021</td>
+                            <center>
+                            <td class="text-center">
+                                <a href="#" class="btn badge-success p-2" data-toggle="modal" data-target="#start_screening">Start</a>
+                            </td>
+                            </center>
+                            <center>
+                                <td class="text-center">
+                                <a href="#" class="btn badge-success p-2">Accept</a>
+                                <a href="#" class="btn badge-danger p-2" >Reject</a>
+                                </td>
+                            </center>
+        
+                            </tr>
+    
+
+            </tbody>
+        </table>
+
+        <div id="pending_donor" class="table-responsive text-nowrap">
+            <div class="card-header green">
+                Incoming Donors
+            </div>
+            <table id="tableaccessrequest" class = "table table-hover table-sm" >
+                <thead class="black white-text">
+                    <tr>
+    
+                        <th class="text-center" style="color: white;" scope = "col">ID</th>
+                        <th class="text-center" style="color: white;" scope = "col">Fullname</th>
+                        <th class="text-center" style="color: white;" scope = "col">Weight</th>
+                        <th class="text-center" style="color: white;" scope = "col">Age</th>
+                        <th class="text-center" style="color: white;" scope = "col">Blood Type</th>
+                        <th class="text-center" style="color: white;" scope = "col">Unit(per bags)</th>
+                        <th class="text-center" style="color: white;" scope = "col">Diseases(if any)</th>
+                        <th class="text-center" style="color: white;" scope = "col">Date Registered</th>
+                        <th class="text-center" style="color: white;" colspan="2" scope = "col">Decision</th>
+                    </tr>
+                </thead>
+    
+                <tbody>
+    
+                
+                    <tr class = "text-center">
+                        <td>6</td>
+                        <td>Michael Angelo S Rilan</td>
+                        <td>68 kgs</td>
+                        <td>22</td>
+                        <td>B+</td>
+                        <td>2</td>
+                        <td>N/A</td>
+                        <td>October 02, 2021</td>
+            
+                        <center>
+                            <td class="text-center">
+                            <a href="#" class="btn badge-success p-2">Accept</a>
+                            <a href="#" class="btn badge-danger p-2" >Reject</a>
+                            </td>
+                        </center>
+    
+                        </tr>
+                        <tr class = "text-center">
+                            <td>10</td>
+                            <td>Nigelle Jarred Salvador</td>
+                            <td>58 kgs</td>
+                            <td>22</td>
+                            <td>B+</td>
+                            <td>2</td>
+                            <td>N/A</td>
+                            <td>October 04, 2021</td>
+                            
+                            <center>
+                                <td class="text-center">
+                                <a href="#" class="btn badge-success p-2">Accept</a>
+                                <a href="#" class="btn badge-danger p-2" >Reject</a>
+                                </td>
+                            </center>
+        
+                            </tr>
+    
+                            <tr class = "text-center">
+                                <td>12</td>
+                                <td>Sean Monacillo</td>
+                                <td>56 kgs</td>
+                                <td>22</td>
+                                <td>B+</td>
+                                <td>2</td>
+                                <td>N/A</td>
+                                <td>October 05, 2021</td>
+                               
+                                <center>
+                                    <td class="text-center">
+                                    <a href="#" class="btn badge-success p-2">Accept</a>
+                                    <a href="#" class="btn badge-danger p-2" >Reject</a>
+                                    </td>
+                                </center>
+            
+                                </tr>
+        
+    
+                </tbody>
+            </table>
+        </div>
+    </div>
+    </div>
+
+
+
+    
+        <footer id="contact" class="container-fluid">
+            <div class="container">
+                <div class="footer-copy">
+                    <div class="row">
+                        <div class="col-lg-8 col-md-6">
+                            <p>Copyright © <a href="#">BloodBank.com</a> | All right reserved.</p>
+                        </div>
+                        <div class="col-lg-4 col-md-6 socila-link">
+                            <ul>
+                                <li><a><i class="fab fa-github"></i></a></li>
+                                <li><a><i class="fab fa-google-plus-g"></i></a></li>
+                                <li><a><i class="fab fa-pinterest-p"></i></a></li>
+                                <li><a><i class="fab fa-twitter"></i></a></li>
+                                <li><a><i class="fab fa-facebook-f"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+        <div class="modal fade" id="start_screening" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLongTitle">Start Screening for <span id= "history_name">Michael Angelo S. Rilan</span></h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                    <div class="card-body">
+                        <form>
+                            <div class="form-row">
+                                <div class="form-group col-md-4">
+                                    <label for="inputdisease">Age</label>
+                                    <input type="text" class="form-control" id="inputdisease" placeholder="Type N/A if no diseases">
+                                </div>
+                            
+                                <div class="form-group col-md-3">
+                                    <label for="inputdisease">Diseases (if any)</label>
+                                    <input type="text" class="form-control" id="inputdisease" placeholder="Type N/A if no diseases">
+                                </div>
+                                <div class="form-group col-md-3">
+                                    <label for="inputweight">Weight</label>
+                                    <input type="text" class="form-control" id="inputweight" placeholder="Must weigh atleast 110lbs">
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group col-md-3">
+                                    <label for="inputunit">Unit (per Bag)</label>
+                                    <input type="text" class="form-control" id="inputunit" placeholder="Ex.2 bags">
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <label for="inputbt">Blood Type</label>
+                                    <select id="inputbloodt" class="form-control">
+                                        <option selected>Choose...</option>
+                                        <option>A+</option>
+                                        <option>A-</option>
+                                        <option>B+</option>
+                                        <option>B-</option>
+                                        <option>O+</option>
+                                        <option>O-</option>
+                                        <option>AB+</option>
+                                        <option>AB-</option>
+                                    </select>
+                                </div>
+                            
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success btn-block hov">Passed</button>
+                    <button type="button" class="btn btn-danger btn-block hov">Failed</button>
+                  <button type="button" class="zoom btn btn-secondary" data-dismiss="modal">Cancel</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+</body>
+
+    <script src="assets/js/jquery-3.2.1.min.js"></script>
+    <script src="assets/js/popper.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/plugins/grid-gallery/js/grid-gallery.min.js"></script>
+    <script src="assets/plugins/scroll-fixed/jquery-scrolltofixed-min.js"></script>
+    <script src="assets/js/script.js"></script>
+    
+</html>
