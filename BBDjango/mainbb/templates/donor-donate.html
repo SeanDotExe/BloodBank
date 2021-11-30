@@ -91,6 +91,13 @@
     </header>
 
 <div class="container marginn">
+    {% if messages %}
+        <ul class="messages">
+            {% for message in messages%}
+            <li {% if message.tags %} class="{{message.tags}}" {% endif %}> {{message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
     <div class="card">
         <div class="card-header red">
             Donate Blood
@@ -101,19 +108,31 @@
                     <form action = "" method="POST">
                         {% csrf_token %}        
                         <div class="form-row">
-                            <div class="form-group col-md-6">
+                            <div class="form-group col-md-5">
+                                <label for="username">Username</label>
+                                <input type="text" name ="username" class="form-control" id="inputname" value="mema" placeholder="Enter your username" readonly>
+                            </div>
+                            <div class="form-group col-md-5">
                                 <label for="fullname">Full Name</label>
                                 <input type="text" name ="fullname" class="form-control" id="inputname" placeholder="Enter your name" required>
                             </div>
-                            <div class="form-group col-md-3">
+                            <div class="form-group col-md-2">
                                 <label for="age">Age</label>
                                 <input type="text" name ="age" class="form-control" id="inputage" placeholder="Must 16 and above"required>
                             </div>
-                            <div class="form-group col-md-3">
+                            <div class="form-group col-md-2">
                                 <label for="sex">Sex</label>
-                                <input type="text" name ="sex" class="form-control" id="inputsex" placeholder="Male or Female"required>
+                                <select name ="sex" id="inputbloodt" class="form-control">
+                                    <option selected disabled = "true">Choose...</option>
+                                    <option>Male</option>
+                                    <option>Female</option>
+                                </select>
                             </div>
-                            <div class="form-group col-md-8">
+                            <div class="form-group col-md-3">
+                                <label for="weight">Weight</label>
+                                <input type="text" name ="weight" class="form-control" id="inputweight" placeholder="Must weigh atleast 110lbs">
+                            </div>
+                            <div class="form-group col-md-7">
                                 <label for="add">Address</label>
                                 <input type="text"name ="add" class="form-control" id="inputAddress" placeholder="Enter your Full Address"required>
                             </div>
@@ -122,19 +141,16 @@
                                 <input type="text"name ="contactnum" class="form-control" id="inputmn" placeholder="Ex.09123456789"required>
                             </div>
                             <div class="form-group col-md-4">
-                                <label for="username">Diseases (if any)</label>
-                                <input type="text" name="username" class="form-control" id="inputdisease" placeholder="Type N/A if no diseases">
+                                <label for="disease">Diseases (if any)</label>
+                                <input type="text" name="disease" class="form-control" id="inputdisease" placeholder="Type N/A if no diseases">
                             </div>
-                            <div class="form-group col-md-3">
-                                <label for="pword">Weight</label>
-                                <input type="text" name ="pword" class="form-control" id="inputweight" placeholder="Must weigh atleast 110lbs">
-                            </div>
+                            
 
-                                    <div class="form-group col-md-2">
-                                <label for="inputunit">Unit (per Bag)</label>
-                                <input type="text" class="form-control" id="inputunit" placeholder="Ex.2 bags">
+                            <div class="form-group col-md-2">
+                                <label for="unit">Unit (per Bag)</label>
+                                <input type="text" name="unit" class="form-control" id="inputunit" placeholder="Ex.2 bags">
                             </div>
-                            <div class="form-group col-md-3">
+                            <div class="form-group col-md-2">
                                 <label for="bloodtype">Blood Type</label>
                                 <select name ="bloodtype" id="inputbloodt" class="form-control">
                                     <option selected disabled = "true">Choose...</option>
@@ -148,8 +164,14 @@
                                     <option>AB-</option>
                                 </select>
                             </div>
+                            <div class="form-group col-md-3">
+                                <label for="status" hidden>Blood Type</label>
+                                <select name ="status" id="inputbloodt" class="form-control" aria-readonly="true" hidden>
+                                    <option>Pending</option>
+                                </select>
+                            </div>
                         </div>
-                        <button type="submit" class="btn btn-danger btn-block hov">submit</button>
+                        <button type="submit" class="btn btn-danger btn-block hov">Submit Form</button>
                     </form>
                 </div>
             </div>
