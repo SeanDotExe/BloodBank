@@ -98,50 +98,54 @@
         <div class="card-body black">
             <div class="card">
                 <div class="card-body">
-                    <form>
-                        <div class="form-check">
+                    <form action = "" method="POST">
+                        {% csrf_token %}
+                        <!--<div class="form-check">
                             <input class="form-check-input" type="checkbox" value="" id="useinfo">
                             <label class="form-check-label" for="useinfo">
                               Use my information
                             </label>
-                          </div>
+                          </div>--->
+                        
                         <div class="form-row">
                             <div class="form-group col-md-6">
-                                <label for="inputAddress">Full Name</label>
-                                <input type="text" class="form-control" id="inputname" placeholder="Enter your name">
+                                <label for="fullname">Full Name</label>
+                                <input type="text" name ="fullname" class="form-control" id="inputname" placeholder="Enter your name" required>
                             </div>
                             <div class="form-group col-md-3">
-                                <label for="inputage">Age</label>
-                                <input type="text" class="form-control" id="inputage" placeholder="Must 16 and above">
+                                <label for="age">Age</label>
+                                <input type="text" name ="age" class="form-control" id="inputage" placeholder="Must 16 and above"required>
                             </div>
                             <div class="form-group col-md-3">
-                                <label for="inputsex">Sex</label>
-                                <input type="text" class="form-control" id="inputsex" placeholder="Male or Female">
+                                <label for="sex">Sex</label>
+                                <input type="text" name ="sex" class="form-control" id="inputsex" placeholder="Male or Female"required>
                             </div>
                             <div class="form-group col-md-8">
-                                <label for="inputAddress">Address</label>
-                                <input type="text" class="form-control" id="inputAddress" placeholder="Enter your Full Address">
+                                <label for="add">Address</label>
+                                <input type="text"name ="add" class="form-control" id="inputAddress" placeholder="Enter your Full Address"required>
                             </div>
                             <div class="form-group col-md-4">
-                                <label for="inputmn">Mobile Number</label>
-                                <input type="text" class="form-control" id="inputmn" placeholder="Ex.09123456789">
+                                <label for="contactnum">Mobile Number</label>
+                                <input type="text"name ="contactnum" class="form-control" id="inputmn" placeholder="Ex.09123456789"required>
                             </div>
                             <div class="form-group col-md-4">
-                                <label for="inputdisease">Diseases (if any)</label>
-                                <input type="text" class="form-control" id="inputdisease" placeholder="Type N/A if no diseases">
+                                <label for="username">Diseases (if any)</label>
+                                <input type="text" name="username" class="form-control" id="inputdisease" placeholder="Type N/A if no diseases">
                             </div>
                             <div class="form-group col-md-3">
-                                <label for="inputweight">Weight</label>
-                                <input type="text" class="form-control" id="inputweight" placeholder="Must weigh atleast 110lbs">
+                                <label for="pword">Weight</label>
+                                <input type="text" name ="pword" class="form-control" id="inputweight" placeholder="Must weigh atleast 110lbs">
                             </div>
+                            <!---
                             <div class="form-group col-md-2">
                                 <label for="inputunit">Unit (per Bag)</label>
                                 <input type="text" class="form-control" id="inputunit" placeholder="Ex.2 bags">
-                            </div>
+                            </div>----->
+
                             <div class="form-group col-md-3">
-                                <label for="inputbt">Blood Type</label>
-                                <select id="inputbloodt" class="form-control">
-                                    <option selected>Choose...</option>
+                                <label for="bloodtype">Blood Type</label>
+                                <select name ="bloodtype" id="inputbloodt" class="form-control">
+                                    <option selected disabled = "true">Choose...</option>
                                     <option>A+</option>
                                     <option>A-</option>
                                     <option>B+</option>
@@ -153,7 +157,7 @@
                                 </select>
                             </div>
                         </div>
-                        <button type="submit" class="btn btn-danger btn-block hov">Submit Form</button>
+                        <button type="submit" class="btn btn-danger btn-block hov">submit</button>
                     </form>
                 </div>
             </div>

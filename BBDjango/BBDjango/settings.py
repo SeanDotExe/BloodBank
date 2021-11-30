@@ -12,7 +12,7 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 import os
 SETTINGS_PATH = os.path.dirname(os.path.dirname(__file__))
 templates = [{'DIRS':[os.path.join(SETTINGS_PATH, 'templates')]}]
-INSTALLED_APPS = ['mainbb',]
+INSTALLED_APPS = ['mainbb']
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -77,10 +77,17 @@ WSGI_APPLICATION = 'BBDjango.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
+
+
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+
+    'default' :{
+
+        'ENGINE':'django.db.backends.mysql',
+        'NAME':'db_bloodbank',
+        'USER' : 'root',
+        'PASSWORD':'',
+        'HOST':'localhost'
     }
 }
 
@@ -122,3 +129,5 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
