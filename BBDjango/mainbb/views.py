@@ -18,9 +18,7 @@ def donor_donate(request):
   if form.is_valid():
     form.save()
 
-  context = {
-      'form': form
-    }
+  context = {'form': form}
   return render(request,"donor-donate.html",context )
 
 def donor_request(request):

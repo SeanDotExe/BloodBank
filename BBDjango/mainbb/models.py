@@ -15,8 +15,8 @@ class reg_donor_patient(models.Model):
     ]
     sex=[
 
-        ('M','Male'),
-        ('F', 'Female')
+        ('Male','M'),
+        ('Female', 'F')
 
     ]
     username = models.CharField(max_length=50)
