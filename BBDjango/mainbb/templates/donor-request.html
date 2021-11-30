@@ -90,92 +90,92 @@
         </div>
     </header>
 
-<div class="container marginn">
-    {% if messages %}
-        <ul class="messages">
-            {% for message in messages%}
-            <li {% if message.tags %} class="{{message.tags}}" {% endif %}> {{message }}</li>
-            {% endfor %}
-        </ul>
-    {% endif %}
-    <div class="card">
-        <div class="card-header red">
-            Request Blood
-        </div>
-        <div class="card-body black">
-            <div class="card">
-                <div class="card-body">
-                    <form action = "" method="POST">
-                        {% csrf_token %}
-                        <div class="form-row">
-                            <div class="form-group col-md-5">
-                                <label for="username">Username</label>
-                                <input type="text" name ="username" class="form-control" id="inputname" value="mema" placeholder="Enter your username" readonly>
+    <div class="container marginn">
+        {% if messages %}
+            <ul class="messages">
+                {% for message in messages%}
+                <li {% if message.tags %} class="{{message.tags}}" {% endif %}> {{message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+        <div class="card">
+            <div class="card-header red">
+                Request Blood
+            </div>
+            <div class="card-body black">
+                <div class="card">
+                    <div class="card-body">
+                        <form action = "" method="POST">
+                            {% csrf_token %}
+                            <div class="form-row">
+                                <div class="form-group col-md-5">
+                                    <label for="username">Username</label>
+                                    <input type="text" name ="username" class="form-control" id="inputname" value="mema" placeholder="Enter your username" readonly>
+                                </div>
+                                <div class="form-group col-md-5">
+                                    <label for="inputAddress">Patient's Full Name</label>
+                                    <input type="text" name="patientname" class="form-control" id="inputname" placeholder="Enter patient's name">
+                                </div>
+                                <div class="form-group col-md-2">
+                                    <label for="inputage">Patient's Age</label>
+                                    <input type="text" name="patientage" class="form-control" id="inputage" placeholder="Enter patient's age ">
+                                </div>
+                                <div class="form-group col-md-2">
+                                    <label for="sex">Sex</label>
+                                    <select name ="sex" id="inputbloodt" class="form-control">
+                                        <option selected disabled = "true">Choose...</option>
+                                        <option>Male</option>
+                                        <option>Female</option>
+                                    </select>
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <label for="inputhf">Health Facility</label>
+                                    <input type="text" name="healthfac" class="form-control" id="inputhf" placeholder="Enter patient's health facility or type home if patient's at home">
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="inputAddress">Health Facility Address</label>
+                                    <input type="text" name="healthfacadd" class="form-control" id="inputAddress" placeholder="Enter health facility address or home address if patient's at home">
+                                </div>
+                                <div class="form-group col-md-2">
+                                    <label for="inputmn">Mobile Number</label>
+                                    <input type="text" name="contactnum" class="form-control" id="inputmn" placeholder="Ex.09123456789">
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="inputdisease">Reason/Diseases (if any)</label>
+                                    <input type="text" name="disease" class="form-control" id="inputdisease" placeholder="Type N/A if no diseases">
+                                </div>
+                                <div class="form-group col-md-2">
+                                    <label for="inputunit">Unit (per Bag)</label>
+                                    <input type="text" name="unit" class="form-control" id="inputunit" placeholder="Ex.2 bags">
+                                </div>
+                                <div class="form-group col-md-2">
+                                    <label for="inputbt">Blood Type</label>
+                                    <select id="inputbloodt" name="bloodtype" class="form-control">
+                                        <option selected>Choose...</option>
+                                        <option>A+</option>
+                                        <option>A-</option>
+                                        <option>B+</option>
+                                        <option>B-</option>
+                                        <option>O+</option>
+                                        <option>O-</option>
+                                        <option>AB+</option>
+                                        <option>AB-</option>
+                                    </select>
+                                </div>
+                                <div class="form-group col-md-3">
+                                    <label for="status" hidden>Blood Type</label>
+                                    <select name ="status" id="inputbloodt" class="form-control" aria-readonly="true" hidden>
+                                        <option>Pending</option>
+                                    </select>
+                                </div>
                             </div>
-                            <div class="form-group col-md-5">
-                                <label for="inputAddress">Patient's Full Name</label>
-                                <input type="text" name="patientname" class="form-control" id="inputname" placeholder="Enter patient's name">
-                            </div>
-                            <div class="form-group col-md-2">
-                                <label for="inputage">Patient's Age</label>
-                                <input type="text" name="patientage" class="form-control" id="inputage" placeholder="Enter patient's age ">
-                            </div>
-                            <div class="form-group col-md-2">
-                                <label for="sex">Sex</label>
-                                <select name ="sex" id="inputbloodt" class="form-control">
-                                    <option selected disabled = "true">Choose...</option>
-                                    <option>Male</option>
-                                    <option>Female</option>
-                                </select>
-                            </div>
-                            <div class="form-group col-md-4">
-                                <label for="inputhf">Health Facility</label>
-                                <input type="text" name="healthfac" class="form-control" id="inputhf" placeholder="Enter patient's health facility or type home if patient's at home">
-                            </div>
-                            <div class="form-group col-md-6">
-                                <label for="inputAddress">Health Facility Address</label>
-                                <input type="text" name="healthfacadd" class="form-control" id="inputAddress" placeholder="Enter health facility address or home address if patient's at home">
-                            </div>
-                            <div class="form-group col-md-2">
-                                <label for="inputmn">Mobile Number</label>
-                                <input type="text" name="contactnum" class="form-control" id="inputmn" placeholder="Ex.09123456789">
-                            </div>
-                            <div class="form-group col-md-6">
-                                <label for="inputdisease">Reason/Diseases (if any)</label>
-                                <input type="text" name="disease" class="form-control" id="inputdisease" placeholder="Type N/A if no diseases">
-                            </div>
-                            <div class="form-group col-md-2">
-                                <label for="inputunit">Unit (per Bag)</label>
-                                <input type="text" name="unit" class="form-control" id="inputunit" placeholder="Ex.2 bags">
-                            </div>
-                            <div class="form-group col-md-2">
-                                <label for="inputbt">Blood Type</label>
-                                <select id="inputbloodt" name="bloodtype" class="form-control">
-                                    <option selected>Choose...</option>
-                                    <option>A+</option>
-                                    <option>A-</option>
-                                    <option>B+</option>
-                                    <option>B-</option>
-                                    <option>O+</option>
-                                    <option>O-</option>
-                                    <option>AB+</option>
-                                    <option>AB-</option>
-                                </select>
-                            </div>
-                            <div class="form-group col-md-3">
-                                <label for="status" hidden>Blood Type</label>
-                                <select name ="status" id="inputbloodt" class="form-control" aria-readonly="true" hidden>
-                                    <option>Pending</option>
-                                </select>
-                            </div>
-                        </div>
-                        <button type="submit" class="btn btn-danger btn-block hov">Submit Form</button>
-                    </form>
+                            <button type="submit" class="btn btn-danger btn-block hov">Submit Form</button>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 
     <footer id="contact" class="container-fluid">
         <div class="container">
