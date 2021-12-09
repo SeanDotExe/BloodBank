@@ -556,6 +556,11 @@ footer {
   background-color: #de1f26;
   transform: scale(1.01);
 }
+.hov1:hover{
+  color: white;
+  background-color: #3F3F3F;
+  transform: scale(1.01);
+}
 
 .zoom:hover{
   transform: scale(1.05);

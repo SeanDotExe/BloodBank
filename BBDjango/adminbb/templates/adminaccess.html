@@ -8,6 +8,7 @@
 
     <div class="container">
         <h2>Dashboard</h2>
+        
     <div class = "row">
         <div class="col-sm-3"> 
             <!-- card type A+ -->
@@ -16,7 +17,10 @@
                     <img class="powerimg" src="/static/images/dugo.png"alt="dugo.png">
                      <h4 class="card-title text-center"> Type A+</h4>
                     <p class="card-text text-center">
-                    Available Bags: <span id="number_of_APOS"> 4</span>
+                        
+                    Available Bags: <span id="number_of_APOS">{{apos_blood_count}}
+                        </span>
+                            
                      </p>
                  </div>
             </div>
@@ -29,7 +33,7 @@
                     <img class="powerimg" src="/static/images/dugo.png"alt="dugo.png">
                      <h4 class="card-title text-center"> Type B+</h4>
                     <p class="card-text text-center">
-                        Available Bags: <span id="number_of_BPOS"> 4</span>
+                        Available Bags: <span id="number_of_BPOS"> {{bpos_blood_count}}</span>
                      </p>
                  </div>
             </div>
@@ -43,7 +47,7 @@
                     <img class="powerimg" src="/static/images/dugo.png"alt="dugo.png">
                      <h4 class="card-title text-center"> Type AB+</h4>
                     <p class="card-text text-center">
-                    Available Bags: <span id="number_of_ABPOS"> 4</span>
+                    Available Bags: <span id="number_of_ABPOS">{{abpos_blood_count}}</span>
                      </p>
                  </div>
             </div>
@@ -56,7 +60,7 @@
                     <img class="powerimg" src="/static/images/dugo.png"alt="dugo.png">
                      <h4 class="card-title text-center"> Type O+</h4>
                     <p class="card-text text-center">
-                        Available Bags: <span id="number_of_OPOS"> 4</span> 
+                        Available Bags: <span id="number_of_OPOS">{{opos_blood_count}}</span> 
                      </p>
                  </div>
             </div>
@@ -74,7 +78,7 @@
                         <img class="powerimg" src="/static/images/dugo.png"alt="dugo.png">
                          <h4 class="card-title text-center"> Type A-</h4>
                         <p class="card-text text-center">
-                        Available Bags: <span id="number_of_ANEG"> 4</span>
+                        Available Bags: <span id="number_of_ANEG"> {{aneg_blood_count}}</span>
                          </p>
                      </div>
                 </div>
@@ -87,7 +91,7 @@
                         <img class="powerimg" src="/static/images/dugo.png"alt="dugo.png">
                          <h4 class="card-title text-center"> Type B-</h4>
                         <p class="card-text text-center">
-                            Available Bags: <span id="number_of_BNEG"> 4</span>
+                            Available Bags: <span id="number_of_BNEG">{{bneg_blood_count}}</span>
                          </p>
                      </div>
                 </div>
@@ -101,7 +105,7 @@
                         <img class="powerimg" src="/static/images/dugo.png"alt="dugo.png">
                          <h4 class="card-title text-center"> Type AB-</h4>
                         <p class="card-text text-center">
-                        Available Bags: <span id="number_of_ABNEG"> 4</span>
+                        Available Bags: <span id="number_of_ABNEG">{{abneg_blood_count}}</span>
                          </p>
                      </div>
                 </div>
@@ -114,7 +118,7 @@
                         <img class="powerimg" src="/static/images/dugo.png"alt="dugo.png">
                          <h4 class="card-title text-center"> Type O-</h4>
                         <p class="card-text text-center">
-                            Available Bags: <span id="number_of_ONEG"> 4</span> 
+                            Available Bags: <span id="number_of_ONEG"> {{oneg_blood_count}}</span> 
                          </p>
                      </div>
                 </div>
@@ -122,4 +126,5 @@
         </div>
     </div>
     </div>
-    {% endblock %}
+
+{% endblock %}
