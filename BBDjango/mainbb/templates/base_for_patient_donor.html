@@ -1,0 +1,58 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>{% block title %}{% endblock %}Blood Bank</title>
+    <link rel="shortcut icon" href="/static/images/fav.png" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.g/static.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@800&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="/static/images/fav.jpg">
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/css/fontawsom-all.min.css">
+    <link rel="stylesheet" href="/static/plugins/grid-gallery/css/grid-gallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/style.css" />
+    <link rel="icon" href="/static/images/log.png">
+</head>
+
+<body>
+    {% include "header_patient_donor.html" %}
+    {% block content %}{% endblock %}
+
+
+    <footer id="contact" class="container-fluid">
+        <div class="container">
+            <div class="footer-copy">
+                <div class="row">
+                    <div class="col-lg-8 col-md-6">
+                        <p>Copyright © <a href="#">BloodBank.com</a> | All right reserved.</p>
+                    </div>
+                    <div class="col-lg-4 col-md-6 socila-link">
+                        <ul>
+                            <li><a><i class="fab fa-github"></i></a></li>
+                            <li><a><i class="fab fa-google-plus-g"></i></a></li>
+                            <li><a><i class="fab fa-pinterest-p"></i></a></li>
+                            <li><a><i class="fab fa-twitter"></i></a></li>
+                            <li><a><i class="fab fa-facebook-f"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+
+    
+</body>
+
+    <script src="/static/js/jquery-3.2.1.min.js"></script>
+    <script src="/static/js/popper.min.js"></script>
+    <script src="/static/js/bootstrap.min.js"></script>
+    <script src="/static/plugins/grid-gallery/js/grid-gallery.min.js"></script>
+    <script src="/static/plugins/scroll-fixed/jquery-scrolltofixed-min.js"></script>
+    <script src="/static/js/script.js"></script>
+    
+</html>

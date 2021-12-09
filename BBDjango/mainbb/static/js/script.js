@@ -9,3 +9,5 @@ $( document ).ready(function() {
 
 
 })
+document.getElementById("currdate").valueAsDate = new Date()
+

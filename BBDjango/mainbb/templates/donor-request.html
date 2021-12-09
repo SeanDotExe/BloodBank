@@ -1,96 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends "base_for_patient_donor.html" %}
+{% block title %} Request Blood {% endblock %}
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Blood Bank</title>
-    <link rel="shortcut icon" href="/static/images/fav.png" type="image/x-icon">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.g/static.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@800&display=swap" rel="stylesheet">
-    <link rel="shortcut icon" href="/static/images/fav.jpg">
-    <link rel="stylesheet" href="/static/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/static/css/fontawsom-all.min.css">
-    <link rel="stylesheet" href="/static/plugins/grid-gallery/css/grid-gallery.min.css">
-    <link rel="stylesheet" type="text/css" href="/static/css/style.css" />
-    <link rel="icon" href="/static/images/log.png">
-</head>
-
-<body>
-    <header class="continer-fluid ">
-        <div class="header-top">
-            <div class="container">
-                <div class="row col-det">
-                    <div class="col-lg-6 d-none d-lg-block">
-                        <ul class="ulleft">
-                            <li>
-                                <i class="far fa-envelope"></i>
-                                bloodbank@gmail.com
-                                <span>|</span></li>
-                            <li>
-                                <i class="far fa-clock"></i>
-                                Service Time : 8:00 AM - 5:00 PM</li>
-                        </ul>
-                    </div>
-                    <div class="col-lg-6 col-md-12">
-                        <ul class="ulright">                   
-                            <li>
-                                <a type="button" href="index.html" class="btn btn-outline-success otherh btn-sm"><i class="fas fa-sign-out-alt"></i>Logout</a>
-                            </li>
-                            
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div id="menu-jk" class="header-bottom">
-            <div class="container">
-                <div class="row nav-row">
-                    <div class="col-md-3 logo">
-                        <img src="/static/images/logo.jpg" alt="">
-                    </div>
-                    <div class="col-md-9 nav-col">
-                        <nav class="navbar navbar-expand-lg navbar-light">
-
-                            <button
-                                class="navbar-toggler"
-                                type="button"
-                                data-toggle="collapse"
-                                data-target="#navbarNav"
-                                aria-controls="navbarNav"
-                                aria-expanded="false"
-                                aria-label="Toggle navigation">
-                                <span class="navbar-toggler-icon"></span>
-                            </button>
-                            <div class="collapse navbar-collapse" id="navbarNav">
-                                <ul class="navbar-nav">
-                                    <li class="nav-item zoom">
-                                        <a class="nav-link" href="donor-home.html">Home
-                                        </a>
-                                    </li>
-                                    <li class="nav-item zoom">
-                                        <a class="nav-link" href="donor-home.html#process">Process</a>
-                                    </li>
-                                    <li class="nav-item zoom">
-                                        <a class="nav-link" href="donor-donate.html">Donate Now</a>
-                                    </li>   
-                                    <li class="nav-item zoom active">
-                                        <a class="nav-link" href="#">Request Blood</a>
-                                    <li class="nav-item zoom">
-                                        <a class="nav-link" href="donor-account.html">My Account</a>
-                                    </li>   
-                                    </li>          
-                                </ul>
-                            </div>
-                        </nav>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </header>
-
+{% block content %}
 <div class="container marginn">
+    {% if messages %}
+        <ul class="messages">
+            {% for message in messages%}
+            <li {% if message.tags %} class="{{message.tags}}" {% endif %}> {{message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
     <div class="card">
         <div class="card-header red">
             Request Blood
@@ -98,50 +17,56 @@
         <div class="card-body black">
             <div class="card">
                 <div class="card-body">
-                    <form>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="useinfo">
-                            <label class="form-check-label" for="useinfo">
-                              Use my information
-                            </label>
-                          </div>
+                    <form action = "" method="POST">
+                        {% csrf_token %}
                         <div class="form-row">
-
+                            <div class="form-group col-md-5">
+                                <label for="username">Username</label>
+                                <input type="text" name ="username" class="form-control" id="inputname" value="mema" placeholder="Enter your username" readonly>
+                            </div>
                             <div class="form-group col-md-6">
+                                <label for="d-borrow">Date of Request</label>
+                                 <input type="date" name="date_request" id="currdate"  class="form-control" readonly>
+                            </div>
+                            <div class="form-group col-md-5">
                                 <label for="inputAddress">Patient's Full Name</label>
-                                <input type="text" class="form-control" id="inputname" placeholder="Enter patient's name">
+                                <input type="text" name="patientname" class="form-control" id="inputname" placeholder="Enter patient's name">
                             </div>
-                            <div class="form-group col-md-3">
+                            <div class="form-group col-md-2">
                                 <label for="inputage">Patient's Age</label>
-                                <input type="text" class="form-control" id="inputage" placeholder="Enter patient's age ">
+                                <input type="text" name="patientage" class="form-control" id="inputage" placeholder="Enter patient's age ">
                             </div>
-                            <div class="form-group col-md-3">
-                                <label for="inputsex">Sex</label>
-                                <input type="text" class="form-control" id="inputsex" placeholder="Male or Female">
+                            <div class="form-group col-md-2">
+                                <label for="sex">Sex</label>
+                                <select name ="sex" id="inputbloodt" class="form-control">
+                                    <option selected disabled = "true">Choose...</option>
+                                    <option>Male</option>
+                                    <option>Female</option>
+                                </select>
                             </div>
                             <div class="form-group col-md-4">
                                 <label for="inputhf">Health Facility</label>
-                                <input type="text" class="form-control" id="inputhf" placeholder="Enter patient's health facility or type home if patient's at home">
+                                <input type="text" name="healthfac" class="form-control" id="inputhf" placeholder="Enter patient's health facility or type home if patient's at home">
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="inputAddress">Health Facility Address</label>
-                                <input type="text" class="form-control" id="inputAddress" placeholder="Enter health facility address or home address if patient's at home">
+                                <input type="text" name="healthfacadd" class="form-control" id="inputAddress" placeholder="Enter health facility address or home address if patient's at home">
                             </div>
                             <div class="form-group col-md-2">
                                 <label for="inputmn">Mobile Number</label>
-                                <input type="text" class="form-control" id="inputmn" placeholder="Ex.09123456789">
+                                <input type="text" name="contactnum" class="form-control" id="inputmn" placeholder="Ex.09123456789">
                             </div>
-                            <div class="form-group col-md-7">
+                            <div class="form-group col-md-6">
                                 <label for="inputdisease">Reason/Diseases (if any)</label>
-                                <input type="text" class="form-control" id="inputdisease" placeholder="Type N/A if no diseases">
+                                <input type="text" name="disease" class="form-control" id="inputdisease" placeholder="Type N/A if no diseases">
                             </div>
                             <div class="form-group col-md-2">
                                 <label for="inputunit">Unit (per Bag)</label>
-                                <input type="text" class="form-control" id="inputunit" placeholder="Ex.2 bags">
+                                <input type="text" name="unit" class="form-control" id="inputunit" placeholder="Ex.2 bags">
                             </div>
-                            <div class="form-group col-md-3">
+                            <div class="form-group col-md-2">
                                 <label for="inputbt">Blood Type</label>
-                                <select id="inputbloodt" class="form-control">
+                                <select id="inputbloodt" name="bloodtype" class="form-control">
                                     <option selected>Choose...</option>
                                     <option>A+</option>
                                     <option>A-</option>
@@ -153,6 +78,12 @@
                                     <option>AB-</option>
                                 </select>
                             </div>
+                            <div class="form-group col-md-3">
+                                <label for="status" hidden>Blood Type</label>
+                                <select name ="status" id="inputbloodt" class="form-control" aria-readonly="true" hidden>
+                                    <option>Request Sent</option>
+                                </select>
+                            </div>
                         </div>
                         <button type="submit" class="btn btn-danger btn-block hov">Submit Form</button>
                     </form>
@@ -162,36 +93,4 @@
     </div>
 </div>
 
-    <footer id="contact" class="container-fluid">
-        <div class="container">
-            <div class="footer-copy">
-                <div class="row">
-                    <div class="col-lg-8 col-md-6">
-                        <p>Copyright © <a href="#">BloodBank.com</a> | All right reserved.</p>
-                    </div>
-                    <div class="col-lg-4 col-md-6 socila-link">
-                        <ul>
-                            <li><a><i class="fab fa-github"></i></a></li>
-                            <li><a><i class="fab fa-google-plus-g"></i></a></li>
-                            <li><a><i class="fab fa-pinterest-p"></i></a></li>
-                            <li><a><i class="fab fa-twitter"></i></a></li>
-                            <li><a><i class="fab fa-facebook-f"></i></a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
-    
-
-    
-</body>
-
-    <script src="/static/js/jquery-3.2.1.min.js"></script>
-    <script src="/static/js/popper.min.js"></script>
-    <script src="/static/js/bootstrap.min.js"></script>
-    <script src="/static/plugins/grid-gallery/js/grid-gallery.min.js"></script>
-    <script src="/static/plugins/scroll-fixed/jquery-scrolltofixed-min.js"></script>
-    <script src="/static/js/script.js"></script>
-    
-</html>
+{% endblock %}

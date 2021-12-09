@@ -10,4 +10,9 @@ urlpatterns = [
   path('donor-donate.html', views.donor_donate, name='donor_donate'),
   path('donor-request.html', views.donor_request, name='donor_request'),
   path('donor-account.html', views.donor_account, name='donor_account'),
+  path('admin', views.defadminlogin, name='adminlogin'),
+  path('adminlogin.html', views.defadminlogin2, name='adminlogin'),
+  path('adminaccess.html', views.defadminaccess, name='adminaccess'),
+  path('admindonors.html', views.defadmindonors, name='admindonors'),
+  path('adminpatient.html', views.defadminpatient, name='adminpatient'),
 ]

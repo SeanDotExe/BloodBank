@@ -1,94 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends "base_for_patient_donor.html" %}
+{% block title %} My Account {% endblock %}
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Blood Bank</title>
-    <link rel="shortcut icon" href="/static/images/fav.png" type="image/x-icon">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.g/static.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@800&display=swap" rel="stylesheet">
-    <link rel="shortcut icon" href="/static/images/fav.jpg">
-    <link rel="stylesheet" href="/static/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/static/css/fontawsom-all.min.css">
-    <link rel="stylesheet" href="/static/plugins/grid-gallery/css/grid-gallery.min.css">
-    <link rel="stylesheet" type="text/css" href="/static/css/style.css" />
-    <link rel="icon" href="/static/images/log.png">
-</head>
-
-<body>
-    <header class="continer-fluid ">
-        <div class="header-top">
-            <div class="container">
-                <div class="row col-det">
-                    <div class="col-lg-6 d-none d-lg-block">
-                        <ul class="ulleft">
-                            <li>
-                                <i class="far fa-envelope"></i>
-                                bloodbank@gmail.com
-                                <span>|</span></li>
-                            <li>
-                                <i class="far fa-clock"></i>
-                                Service Time : 8:00 AM - 5:00 PM</li>
-                        </ul>
-                    </div>
-                    <div class="col-lg-6 col-md-12">
-                        <ul class="ulright">                   
-                            <li>
-                                <a type="button" href="index.html" class="btn btn-outline-success otherh btn-sm"><i class="fas fa-sign-out-alt"></i>Logout</a>
-                            </li>
-                            
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div id="menu-jk" class="header-bottom">
-            <div class="container">
-                <div class="row nav-row">
-                    <div class="col-md-3 logo">
-                        <img src="/static/images/logo.jpg" alt="">
-                    </div>
-                    <div class="col-md-9 nav-col">
-                        <nav class="navbar navbar-expand-lg navbar-light">
-
-                            <button
-                                class="navbar-toggler"
-                                type="button"
-                                data-toggle="collapse"
-                                data-target="#navbarNav"
-                                aria-controls="navbarNav"
-                                aria-expanded="false"
-                                aria-label="Toggle navigation">
-                                <span class="navbar-toggler-icon"></span>
-                            </button>
-                            <div class="collapse navbar-collapse" id="navbarNav">
-                                <ul class="navbar-nav">
-                                    <li class="nav-item zoom">
-                                        <a class="nav-link" href="donor-home.html">Home
-                                        </a>
-                                    </li>
-                                    <li class="nav-item zoom">
-                                        <a class="nav-link" href="donor-home.html#process">Process</a>
-                                    </li>
-                                    <li class="nav-item zoom">
-                                        <a class="nav-link" href="donor-donate.html">Donate Now</a>
-                                    </li>   
-                                    <li class="nav-item zoom">
-                                        <a class="nav-link" href="donor-request.html">Request Blood</a>
-                                    <li class="nav-item zoom active">
-                                        <a class="nav-link" href="#">My Account</a>
-                                    </li>   
-                                    </li>          
-                                </ul>
-                            </div>
-                        </nav>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </header>
+{% block content %}
 
 <div class="container marginn">
     <div class="row">
@@ -100,7 +13,8 @@
                     </div><br>
                     <div>
                         Request Made <br>
-                        6
+
+                       <span id = number_of_requests>{{count_req_total}}</span>
                     </div>                            
                 </div>
             </div>
@@ -113,7 +27,7 @@
                     </div><br>
                     <div>
                         Pending Request <br>
-                        1
+                        <span id = number_of_requests>{{count_pending_total}}</span>
                     </div>                            
                 </div>
             </div>
@@ -126,7 +40,7 @@
                     </div><br>
                     <div>
                         Approved Request<br>
-                        4
+                        <span id = number_of_requests>{{count_approved_total}}</span>
                     </div>                            
                 </div>
             </div>
@@ -139,7 +53,7 @@
                     </div><br>
                     <div>
                         Rejected Request <br>
-                        1
+                        <span id = number_of_requests>{{count_reject_total}}</span>
                     </div>                            
                 </div>
             </div>
@@ -152,7 +66,7 @@
         <div class="card-header green">
             My Donation History
         </div>
-        <table class="table ">
+        <table class="table" id= "donor_table">
             <thead class="table-secondary">
                 <tr>
                 <th scope="col">#</th>
@@ -165,42 +79,26 @@
                 </tr>
             </thead>
             <tbody>
+                {% for db in donate_data %}
                 <tr>
-                <th scope="row">1</th>
-                <td>Sean Monacillo</td>
-                <td>O+</td>
-                <td>1</td>
-                <td>07/10/21</td>
-                <td><span class="label success">Approved</span></td>
-                <td>Admin Accepted your Request, go to Blood Doners clinic on November 30 2021 at 9am</td>
-                </tr>
-                <tr>
-                <th scope="row">2</th>
-                <td>Sean Monacillo</td>
-                <td>O+</td>
-                <td>1</td>
-                <td>09/20/21</td>
-                <td><span class="label danger">Rejected</span></td>
-                <td>Donor has many complications</td>
-                </tr>
-                <tr>
-                <th scope="row">3</th>
-                <td>Michael Angelo Rilan</td>
-                <td>B+</td>
-                <td>2</td>
-                <td>12/28/21</td>
-                <td><span class="label info">Pending</span></td>
-                <td>waiting for the admin to accept</td>
-                </tr>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Sean Monacillo</td>
-                    <td>O+</td>
-                    <td>1</td>
-                    <td>07/10/21</td>
-                    <td><span class="label success">Success</span></td>
-                    <td>Successfully donated blood</td>
+                    <th scope="row">{{ db.id }}</th>
+                    <td>{{db.fullname}}</td>
+                    <td>{{db.bloodtype}}</td>
+                    <td>{{db.unit}}</td>
+                    <td>{{db.date_request}}</td>
+                    {% if db.status == 'Pending' %}
+                        <td><span class="label info">{{db.status}}</span></td>
+                    {% elif db.status == 'Approved' %}
+                        <td><span class="label success">{{db.status}}</span></td>
+                    {% elif db.status == 'Reject' %}
+                        <td><span class="label reject">{{db.status}}</span></td>
+                    {% elif db.status == 'Request Sent' %}
+                        <td>{{db.status}}</td>
+                    {% endif %}
+                    <td>{{db.remarks}}</td>
+
                     </tr>
+                {% endfor %}
             </tbody>
         </table>
     </div>
@@ -221,42 +119,26 @@
                 </tr>
             </thead>
             <tbody>
+                {% for db1 in need_data %}
                 <tr>
-                <th scope="row">1</th>
-                <td>Nigelle Jarred Salvador</td>
-                <td>AB-</td>
-                <td>2</td>
-                <td>07/27/21</td>
-                <td><span class="label success">Approved</span></td>
-                <td>Bring ID of the patient to claim and process the blood</td>
-                </tr>
-                <tr>
-                <th scope="row">2</th>
-                <td>Nigelle Jarred Salvador</td>
-                <td>AB-</td>
-                <td>1</td>
-                <td>07/27/21</td>
-                <td><span class="label danger">Rejected</span></td>
-                <td>Blood Type is not available</td>
-                </tr>
-                <tr>
-                    <th scope="row">2</th>
-                    <td>Nigelle Jarred Salvador</td>
-                    <td>AB-</td>
-                    <td>1</td>
-                    <td>07/27/21</td>
-                    <td><span class="label success">Success</span></td>
-                    <td>Blood Successfully Received</td>
+                    <th scope="row">{{ db1.id }}</th>
+                    <td>{{db1.patientname}}</td>
+                    <td>{{db1.bloodtype}}</td>
+                    <td>{{db1.unit}}</td>
+                    <td>{{db1.date_request}}</td>
+                    {% if db1.status == 'Pending' %}
+                        <td><span class="label info">{{db1.status}}</span></td>
+                    {% elif db1.status == 'Approved' %}
+                        <td><span class="label success">{{db1.status}}</span></td>
+                    {% elif db1.status == 'Reject' %}
+                        <td><span class="label reject">{{db1.status}}</span></td>
+                    {% elif db1.status == 'Request Sent' %}
+                        <td>{{db1.status}}</td>
+                    {% endif %}
+                    <td>{{db1.remarks}}</td>
+
                     </tr>
-                <tr>
-                <th scope="row">3</th>
-                <td>Sean Monacillo</td>
-                <td>AB-</td>
-                <td>1</td>
-                <td>07/27/21</td>
-                <td><span class="label success">Approved</span></td>
-                <td>Bring ID of the patient to claim and process the blood</td>
-                </tr>
+                {% endfor %}
             </tbody>
         </table>
     </div>
@@ -291,34 +173,4 @@
     </div>
 </div>
 
-    <footer id="contact" class="container-fluid">
-        <div class="container">
-            <div class="footer-copy">
-                <div class="row">
-                    <div class="col-lg-8 col-md-6">
-                        <p>Copyright © <a href="#">BloodBank.com</a> | All right reserved.</p>
-                    </div>
-                    <div class="col-lg-4 col-md-6 socila-link">
-                        <ul>
-                            <li><a><i class="fab fa-github"></i></a></li>
-                            <li><a><i class="fab fa-google-plus-g"></i></a></li>
-                            <li><a><i class="fab fa-pinterest-p"></i></a></li>
-                            <li><a><i class="fab fa-twitter"></i></a></li>
-                            <li><a><i class="fab fa-facebook-f"></i></a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
-
-</body>
-
-    <script src="/static/js/jquery-3.2.1.min.js"></script>
-    <script src="/static/js/popper.min.js"></script>
-    <script src="/static/js/bootstrap.min.js"></script>
-    <script src="/static/plugins/grid-gallery/js/grid-gallery.min.js"></script>
-    <script src="/static/plugins/scroll-fixed/jquery-scrolltofixed-min.js"></script>
-    <script src="/static/js/script.js"></script>
-    
-</html>
+{% endblock %}
