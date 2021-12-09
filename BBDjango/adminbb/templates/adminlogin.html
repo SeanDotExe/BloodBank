@@ -37,15 +37,16 @@
                         </ul>
                     </div>
                     <div class="col-lg-6 col-md-12">
-                        <ul class="ulright">                   
-                            <li>
-                                <button type="button" class="btn btn-outline-success otherh btn-sm" data-toggle="modal" data-target="#login"><i class="fas fa-user-alt"></i>Login</button>
-                            </li>
-                            <li>
-                                <button type="button" class="btn btn-outline-success zoom btn-sm" data-toggle="modal" data-target="#register"><i class="fas fa-user-plus"></i></i>Register</button>
-                            </li>
-                            
-                        </ul>
+                        <form class="form-row form-inline my-2 my-lg-0", action="adminaccess.html">
+                            <div class="col-auto">
+                                <input type="text" class="form-control-sm" placeholder="Enter Username">
+                            </div>
+                            <div class="col-auto">
+                                <input type="password" class="form-control-sm" placeholder="Enter Password">
+                            </div>
+        
+                            <button class="btn btn-outline-success otherh my-2 my-sm-0 btn-sm" type="submit">Login</button>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -80,7 +81,10 @@
                                     </li>
                                     <li class="nav-item zoom">
                                         <a class="nav-link" href="teamsection.html">Contact Us</a>
-                                    </li>     
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#register">Register</a>
+                                    </li>      
                                 </ul>
                             </div>
                         </nav>
@@ -198,6 +202,70 @@
                 </div>
             </div>
         </section>
+<!------Real Registration Form----------------->
+        <section id="register" class="donation-care">
+            <div class="container">
+                <div class="row session-title">
+                    <h2>Register Account</h2>
+                </div>
+                {% if messages %}
+                <ul class="messages">
+                {% for message in messages%}
+                <li {% if message.tags %} class="{{message.tags}}" {% endif %}> {{message }}</li>
+                {% endfor %}
+                </ul>
+                {% endif %}
+                <div class="card-body black">
+                    <div class="card">
+                        <div class="card-body">
+                            <form action = "" method="POST">
+                                {% csrf_token %}       
+                                <div class="form-row">
+                                    <div class="form-group col-md-4">
+                                        <label for="username">Username</label>
+                                        <input type="text" name ="username" class="form-control" id="inputusername" placeholder="Enter Userame" required>
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <label for="password">Password</label>
+                                        <input type="password" name ="pword" class="form-control" id="inputpassword" placeholder="Enter Password" required>
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <label for="password">Confirm Password</label>
+                                        <input type="password" name ="pword2" class="form-control" id="inputpassword" placeholder="Enter Confirm Password" required>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="fullname">Fullname</label>
+                                        <input type="text" name ="fullname" class="form-control" id="inputname" placeholder="Enter your name" required>
+                                    </div>
+                                    <div class="form-group col-md-3">
+                                        <label for="sex">Profession</label>
+                                        <select name ="profession" id="inputbloodt" class="form-control">
+                                            <option selected disabled = "true">Choose...</option>
+                                            <option>Medical Technologist</option>
+                                            <option>Physician</option>
+                                            <option>Nurse</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group col-md-3">
+                                        <label for="sex">Sex</label>
+                                        <select name ="sex" id="inputbloodt" class="form-control">
+                                            <option selected disabled = "true">Choose...</option>
+                                            <option>Male</option>
+                                            <option>Female</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <label for="contactnum">Mobile Number</label>
+                                        <input type="text"name ="contactnum" class="form-control" id="inputmn" placeholder="Ex.09123456789"required>
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-danger btn-block hov">Register</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
 
     <footer id="contact" class="container-fluid">
@@ -222,7 +290,7 @@
     </footer>
 
 
-
+<!-- Modal Register (not used) -->
 <div class="modal fade" id="register" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
       <div class="modal-content">
@@ -275,7 +343,7 @@
   </div>
   
 
-
+<!-- Modal Login (not used) -->
 <div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">

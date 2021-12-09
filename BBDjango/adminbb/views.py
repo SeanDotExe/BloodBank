@@ -1,8 +1,15 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.http import HttpResponse
-
+from .models import reg_admin
+from .forms import registeradmin
+from django.contrib import messages
 def defadminlogin(request):
-  return render(request,"adminlogin.html")
+  form = registeradmin(request.POST or None)
+  if form.is_valid():
+    form.save()
+    messages.success(request, "Successfully Registered")
+  context = {'form': form}
+  return render(request,"adminlogin.html",context)
   
 def defadminlogin2(request):
   return render(request,"adminlogin.html")

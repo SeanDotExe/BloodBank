@@ -239,15 +239,25 @@
 
     <section id="register" class="donation-care">
         <div class="container">
+            
             <div class="row session-title">
                 <h2>Register Account</h2>
             </div>
+            {% if messages %}
+            <ul class="messages">
+                {% for message in messages%}
+                <li {% if message.tags %} class="{{message.tags}}" {% endif %}> {{message }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
             <div class="card-body black">
                 <div class="card">
                     <div class="card-body">
                         <form action = "" method="POST">
-                            {% csrf_token %}        
+                            {% csrf_token %}
+
                             <div class="form-row">
+
                                 <div class="form-group col-md-4">
                                     <label for="username">Username</label>
                                     <input type="text" name ="username" class="form-control" id="inputusername" placeholder="Enter Userame" required>

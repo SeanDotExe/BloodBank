@@ -150,6 +150,9 @@ body {
     @media screen and (max-width: 600px) {
       .page-nav h2 {
         font-size: 26px; } }
+
+  
+    
   .page-nav ul li {
     float: left;
     margin-right: 10px;

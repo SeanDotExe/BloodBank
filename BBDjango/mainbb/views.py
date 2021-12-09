@@ -12,6 +12,7 @@ def index(request):
   form = registration_form(request.POST or None)
   if form.is_valid():
     form.save()
+    messages.success(request, "Successfully Registered")
   context = {'form': form}
   return render(request,"index.html",context)
 
