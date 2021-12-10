@@ -26,18 +26,22 @@
 
             <tbody>
 
-            
+                {% for nd in needblood %}
                 <tr class = "text-center">
-                    <td>6</td>
-                    <td>Michael Angelo S Rilan</td>
-                    <td>2</td>
-                    <td>October 2 2021</td>
-                    <td>B+</td>
+                    <td> {{nd.id}} </td>
+                    <td>{{nd.patientname}}</td>
+                    <td>{{nd.unit}}</td>
+                    <td>{{nd.date_request}}</td>
+                    <td>{{nd.bloodtype}}</td>
+                    <td>{{nd.disease}}</td>
+                    <td>{{nd.contactnum}}</td>
+                    <td>{{nd.healthfac}}</td>
                     <td class="text-center">
-                        <a href="#" class="btn badge-success p-2">Accept</a>
-                        <a href="patient_reject.html" class="btn badge-danger p-2" >Reject</a>
+                        <a href="{% url 'patient_approved' nd.id %}" class="btn badge-success p-2">Accept</a>
+                        <a href="{% url 'patient_reject' nd.id %}" class="btn badge-danger p-2" >Reject</a>
                     </td>
-                    
+                </tr>
+                {%endfor%}    
             </tbody>
         </table>
 
