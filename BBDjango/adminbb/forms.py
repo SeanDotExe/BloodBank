@@ -12,8 +12,25 @@ class patientrejectform(forms.ModelForm):
         model = add_reqblood
         fields = ['status','remarks']
 
+
 class patientapprovedform(forms.ModelForm):
     class Meta:
         model = add_reqblood
         fields = ['bloodtype','status','remarks']
 
+
+class donorrejectform(forms.ModelForm):
+    class Meta:
+        model = add_reqdonate
+        fields = ['status','remarks']
+
+class donor_approved_screening_form(forms.ModelForm):
+    class Meta:
+        model = add_reqdonate
+        fields = ['status','remarks']
+
+        
+class donor_screening_form(forms.ModelForm):
+    class Meta:
+        model = add_reqdonate
+        fields = ['id','fullname','weight','unit','disease','bloodtype','status','remarks']

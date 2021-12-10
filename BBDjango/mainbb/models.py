@@ -47,6 +47,9 @@ class add_reqdonate(models.Model):
     ]
     choice=[
         ('Request Sent','Request Sent'),
+        ('Pending','Pending'),
+        ('Reject','Reject'),
+        ('Approved','Approved'),
     ]
     username = models.CharField(max_length=50)
     fullname = models.CharField(max_length=100)
@@ -58,7 +61,7 @@ class add_reqdonate(models.Model):
     disease = models.CharField(max_length=100)
     unit=models.DecimalField(max_digits=3,decimal_places=0)
     bloodtype = models.CharField(max_length=4,choices=bloodtype)
-    status = models.CharField(max_length=20, choices=choice)
+    status = models.CharField(max_length=20, choices=choice,null = True)
     date_request = models.DateField(null=True)
     remarks = models.CharField(max_length=200,null=True)
 
