@@ -91,7 +91,7 @@
                     {% elif db.status == 'Approved' %}
                         <td><span class="label success">{{db.status}}</span></td>
                     {% elif db.status == 'Reject' %}
-                        <td><span class="label reject">{{db.status}}</span></td>
+                        <td><span class="label danger">{{db.status}}</span></td>
                     {% elif db.status == 'Request Sent' %}
                         <td>{{db.status}}</td>
                     {% endif %}
