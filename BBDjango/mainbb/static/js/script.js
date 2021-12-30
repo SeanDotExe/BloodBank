@@ -9,5 +9,4 @@ $( document ).ready(function() {
 
 
 })
-document.getElementById("currdate").valueAsDate = new Date()
-
+document.getElementById("currdate").valueAsDate = new Date();

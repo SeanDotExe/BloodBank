@@ -70,9 +70,6 @@
             <thead class="table-secondary">
                 <tr>
                 <th scope="col">#</th>
-                <th scope="col">Donor's Name</th>
-                <th scope="col">Blood Type</th>
-                <th scope="col">Unit (per bag)</th>
                 <th scope="col">Date</th>
                 <th scope="col">Status</th>
                 <th scope="col">Remarks</th>
@@ -82,9 +79,6 @@
                 {% for db in donate_data %}
                 <tr>
                     <th scope="row">{{ db.id }}</th>
-                    <td>{{db.fullname}}</td>
-                    <td>{{db.bloodtype}}</td>
-                    <td>{{db.unit}}</td>
                     <td>{{db.date_request}}</td>
                     {% if db.status == 'Pending' %}
                         <td><span class="label info">{{db.status}}</span></td>
@@ -131,7 +125,7 @@
                     {% elif db1.status == 'Approved' %}
                         <td><span class="label success">{{db1.status}}</span></td>
                     {% elif db1.status == 'Reject' %}
-                        <td><span class="label reject">{{db1.status}}</span></td>
+                        <td><span class="label danger">{{db1.status}}</span></td>
                     {% elif db1.status == 'Request Sent' %}
                         <td>{{db1.status}}</td>
                     {% endif %}
@@ -144,33 +138,6 @@
     </div>
 </div>
 
-<div class="container marginn ">
-    <div class="card">
-        <div class="card-header red">
-            Change Password
-        </div>
-        <div class="card-body black ">
-            <div class="card">
-                <div class="card-body">
-                    <form>
-                        <div class="form-group col-md">
-                            <label for="inputPassword">Old Password</label>
-                            <input type="password" class="form-control" id="inputpass" placeholder="Enter old password">
-                        </div>
-                        <div class="form-group col-md">
-                            <label for="inputPassword">New Password</label>
-                            <input type="password" class="form-control" id="inputpass" placeholder="Enter new password">
-                        </div>
-                        <div class="form-group col-md">
-                            <label for="inputPassword">Confirm Password</label>
-                            <input type="password" class="form-control" id="inputpass" placeholder="Enter confirm password">
-                        </div>
-                        <button type="submit" class="btn btn-danger btn-block hov">Submit Form</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+
 
 {% endblock %}

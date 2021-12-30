@@ -88,7 +88,10 @@ DATABASES = {
         'NAME':'db_bloodbank',
         'USER' : 'root',
         'PASSWORD':'',
-        'HOST':'localhost'
+        'HOST':'localhost',
+        'OPTIONS': {
+            'init_command': "SET sql_mode= 'STRICT_TRANS_TABLES'",
+        }
     }
 }
 

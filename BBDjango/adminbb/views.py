@@ -2,25 +2,80 @@ from django.shortcuts import render,redirect
 from django.http import HttpResponse
 from .models import reg_admin,blood_counter
 from mainbb.models import add_reqblood,add_reqdonate
-from .forms import registeradmin,patientrejectform,patientapprovedform,donorrejectform,donor_approved_screening_form,donor_screening_form
+from .forms import registeradmin,patientrejectform,patientapprovedform,donorrejectform,donor_approved_screening_form,donor_screening_form,register
 from django.contrib import messages
+from django.contrib.auth.models import User
+from django.contrib.auth import authenticate, login, logout,update_session_auth_hash
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.views import PasswordChangeView
+from django.contrib.auth.forms import PasswordChangeForm
+from django.urls import reverse_lazy
 
+def logoutUser(request):
+  logout(request)
+  return redirect("adminlogin")
 
+  
+def defregister(request):
+  form = register()
+  if request.method == 'POST':
+    form = register(request.POST)
+    passwordvalue1= form['password1'].value()
+    passwordvalue2= form['password2'].value()
+    uservalue= form['username'].value()
+    emaill= form['email'].value()
+    fname = form['first_name'].value()
+    lname = form['last_name'].value()
+    
+
+    if form.is_valid():
+      #if User.objects.filter(username=uservalue).exists():
+      #user = User.objects.create_user(uservalue, email=emaill, password='johnpassword', is_staff=True)
+      User.objects.create_user(uservalue, email=emaill,first_name = fname,last_name = lname, password=passwordvalue2, is_staff=True)
+      messages.success(request, "Successfully Registered Please click 'Home' at the Menu Panel to Login")
+          
+      #else:
+       # messages.info(request,"Username already taken, Please fillout another username")
+    else:
+      if User.objects.filter(username=uservalue).exists():
+        messages.info(request,"Username Already Taken: "+"Please fillout another username")
+      else:
+        messages.info(request, "Password Error:")
+        messages.info(request, "~Please check if the Passwords are the same")
+        messages.info(request, "~Your Password can't be too similar to your personal information")
+        messages.info(request, "~Your Password must contain 8 characters(Letters, Digits and @/./+/-/_ only)")
+        messages.info(request, "~Your Password can't be a commonly used password")
+        messages.info(request, "~Your Password can't be entirely numeric")
+  context = {
+            'form': form
+        }
+  return render(request, "adminregister.html", context)
 
 def defadminlogin(request):
-  form = registeradmin(request.POST or None)
-  if form.is_valid():
-    form.save()
-    messages.success(request, "Successfully Registered")
-  context = {'form': form}
-  return render(request,"adminlogin.html",context)
-  
-def defadminlogin2(request):
-  return render(request,"adminlogin.html")
+  if request.method == 'POST':
+    userr = request.POST.get('username')
+    pw = request.POST.get('password') 
+    user = authenticate(request, username=userr,password=pw)
+    print(user.is_staff)
+    if user is not None and user.is_staff:
+      login(request, user)
+      print("pumasok sya")
+      return redirect('adminaccess')
+    else:
+      print("dito sya pumasok")
+      messages.info(request,'Invalid Credentials')
+        
+  context = {}
+
+  return render(request, 'adminlogin.html',context)
+#Adminkunno_1201
+
+#sampledonor
+# Sampollang_1201
 
 
 
-
+@login_required(login_url='adminlogin')
 def defadminaccess(request):
   apos_blood_count = blood_counter.objects.values_list('Apos', flat=True).get(pk=1)
   aneg_blood_count = blood_counter.objects.values_list('Aneg', flat=True).get(pk=1)
@@ -43,7 +98,7 @@ def defadminaccess(request):
   return render(request,"adminaccess.html",get_count)
 
 
-
+@login_required(login_url='adminlogin')
 def defadmindonors(request):
   count_requests= add_reqdonate.objects.filter(status = "Request Sent").count()
   count_pending= add_reqdonate.objects.filter(status = "Pending").count()
@@ -66,7 +121,7 @@ def defadmindonors(request):
 
 
 
-
+@login_required(login_url='adminlogin')
 def defadminpatient(request):
   needblood = add_reqblood.objects.filter(status = "Request Sent")
   apos_blood_count = blood_counter.objects.values_list('Apos', flat=True).get(pk=1)
@@ -95,7 +150,7 @@ def defadminpatient(request):
 
 
 
-
+@login_required(login_url='adminlogin')
 def defpatientreject(request,id):
   patient_info = add_reqblood.objects.get(id=id)
   patientform = patientrejectform(request.POST or None, instance=patient_info)
@@ -113,7 +168,7 @@ def defpatientreject(request,id):
 
 
 
-
+@login_required(login_url='adminlogin')
 def defdonorreject(request,id):
   donor_info = add_reqdonate.objects.get(id=id)
   donorform = donorrejectform(request.POST or None, instance=donor_info)
@@ -142,7 +197,7 @@ def defdonorapproved_screening(request,id):
       return redirect("admindonors")
 
   return render(request,"donor_approved_for_screening.html",context)
-
+@login_required(login_url='adminlogin')
 def defdonor_screening(request,id):
   donor_info = add_reqdonate.objects.get(id=id)
   apos_blood_count = blood_counter.objects.values_list('Apos', flat=True).get(pk=1)
@@ -191,6 +246,7 @@ def defdonor_screening(request,id):
 
   return render(request,"donor_screening.html",context)
 
+@login_required(login_url='adminlogin')
 def defpatientapproved(request,id):
   apos_blood_count = blood_counter.objects.values_list('Apos', flat=True).get(pk=1)
   aneg_blood_count = blood_counter.objects.values_list('Aneg', flat=True).get(pk=1)

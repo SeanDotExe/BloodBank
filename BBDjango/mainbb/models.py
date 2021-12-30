@@ -59,7 +59,7 @@ class add_reqdonate(models.Model):
     contactnum = models.DecimalField(max_digits=11,decimal_places=0)
     weight=models.DecimalField(max_digits=3,decimal_places=0)
     disease = models.CharField(max_length=100)
-    unit=models.DecimalField(max_digits=3,decimal_places=0)
+    unit=models.DecimalField(max_digits=3,decimal_places=0,null=True)
     bloodtype = models.CharField(max_length=4,choices=bloodtype)
     status = models.CharField(max_length=20, choices=choice,null = True)
     date_request = models.DateField(null=True)

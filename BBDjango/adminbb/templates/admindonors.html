@@ -35,32 +35,6 @@
                 </div>
             </div>
         </div>
-        <div class="col-sm-3">
-            <div class="card text-center bg-light">
-                <div class="card-body">
-                    <div class="blood">
-                        <i class="fas fa-check-circle fa-3x" style="color: green;"></i>
-                    </div><br>
-                    <div>
-                        Approved Donors<br>
-                        <span id = number_of_requests>{{count_approved}}</span>
-                    </div>                            
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-3">
-            <div class="card text-center bg-light">
-                <div class="card-body">
-                    <div class="blood">
-                        <i class="fas fa-times-circle fa-3x" style="color: red;"></i>
-                    </div><br>
-                    <div>
-                        Rejected Donors <br>
-                        <span id = number_of_requests>{{count_reject}}</span>
-                    </div>                            
-                </div>
-            </div>
-        </div>
     </div>
 </div>
 
@@ -78,7 +52,6 @@
                     <th class="text-center" style="color: white;" scope = "col">Weight(kgs)</th>
                     <th class="text-center" style="color: white;" scope = "col">Age</th>
                     <th class="text-center" style="color: white;" scope = "col">Blood Type</th>
-                    <th class="text-center" style="color: white;" scope = "col">Unit(per bags)</th>
                     <th class="text-center" style="color: white;" scope = "col">Diseases(if any)</th>
                     <th class="text-center" style="color: white;" colspan="1" scope = "col">Screening</th>
                 </tr>
@@ -86,14 +59,13 @@
 
             <tbody>
 
-                {% for pd in pendingdonor %}
+                {% for pd in pending_donor %}
                 <tr class = "text-center">
                     <td>{{pd.id}}</td>
                     <td>{{pd.fullname}}</td>
                     <td>{{pd.weight}}</td>
                     <td>{{pd.age}}</td>
                     <td>{{pd.bloodtype}}</td>
-                    <td>{{pd.unit}}</td>
                     <td>{{pd.disease}}</td>
                     <center>
                     <td class="text-center">
@@ -122,7 +94,6 @@
                         <th class="text-center" style="color: white;" scope = "col">Weight(kgs)</th>
                         <th class="text-center" style="color: white;" scope = "col">Age</th>
                         <th class="text-center" style="color: white;" scope = "col">Blood Type</th>
-                        <th class="text-center" style="color: white;" scope = "col">Unit(per bags)</th>
                         <th class="text-center" style="color: white;" scope = "col">Diseases(if any)</th>
                         <th class="text-center" style="color: white;" scope = "col">Date Registered</th>
                         <th class="text-center" style="color: white;" colspan="2" scope = "col">Decision</th>
@@ -138,7 +109,6 @@
                         <td>{{dnr.weight}}</td>
                         <td>{{dnr.age}}</td>
                         <td>{{dnr.bloodtype}}</td>
-                        <td>{{dnr.unit}}</td>
                         <td>{{dnr.disease}}</td>
                         <td>{{dnr.date_request}}</td>
             

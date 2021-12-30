@@ -7,14 +7,16 @@
                     <ul class="ulleft">
                         <li id = name>
                             <i></i>
-                            Hi Michael Angelo S. Rilan!
+                            {%if user.is_authenticated %}
+                            Hi <span >{{user.last_name}},{{user.first_name}}</span>!
                             </li>
+                            {% endif %}
                     </ul>
                 </div>
                 <div class="col-lg-6 col-md-12">
                     <ul class="ulright">                   
                         <li>
-                            <a type="button" href="adminlogin.html" class="btn btn-outline-success otherh btn-sm"><i class="fas fa-sign-out-alt"></i>Logout</a>
+                            <a type="button" href="{% url 'logout' %}" class="btn btn-outline-success otherh btn-sm"><i class="fas fa-sign-out-alt"></i>Logout</a>
                         </li>
                         
                     </ul>

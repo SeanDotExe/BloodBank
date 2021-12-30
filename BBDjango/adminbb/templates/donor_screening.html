@@ -24,23 +24,19 @@
                         <div class="form-row">
                             <div class="form-group col-md-4">
                                 <label for="id">ID</label>
-                                <input type="text" name ="id" class="form-control" value="{{donor.id}}" id="inputusername" readonly>
+                                <input type="text" name ="id" class="form-control" value="{{donor.id}}" readonly>
                             </div>
                             <div class="form-group col-md-4">
                                 <label for="fullname">Fullname</label>
-                                <input type="text" name ="fullname" class="form-control" value="{{donor.fullname}}" id="inputpassword" readonly>
+                                <input type="text" name ="fullname" class="form-control" value="{{donor.fullname}}"  required>
                             </div>
                             <div class="form-group col-md-4">
                                 <label for="unit">Weight(kgs)</label>
-                                <input type="text" name ="weight" class="form-control" value="{{ donor.weight}}" id="inputpassword" readonly>
-                            </div>
-                            <div class="form-group col-md-4">
-                                <label for="unit">Unit/s</label>
-                                <input type="text" name ="unit" class="form-control" value="{{donor.unit}}" id="inputpassword" readonly>
+                                <input type="text" name ="weight" class="form-control" value="{{ donor.weight}}" required>
                             </div>
                             <div class="form-group col-md-4">
                                 <label for="unit">Diseases(if any)</label>
-                                <input type="text" name ="disease" class="form-control" value="{{donor.disease}}" id="inputpassword" readonly>
+                                <input type="text" name ="disease" class="form-control" value="{{donor.disease}}" required>
                             </div>
                             <div class="form-group col-md-2">
                                 <label for="bloodtype">Blood Type</label>
@@ -68,7 +64,7 @@
                         <div class="form-row">
                             <div class="form-outline col-lg-10">
                                 <label class="form-label" for="form6Example7">Remarks</label>
-                                <textarea class="form-control" id="form6Example7" name ="remarks" rows="5" value="{{patient.remarks}}" placeholder="Type the reason why the Patient is rejected Here" required></textarea>
+                                <textarea class="form-control" id="form6Example7" name ="remarks" rows="5" placeholder="Type to send a notification message to the donor" required></textarea>
                             </div>
                               </div>
                         <button type="submit" class="btn btn-success btn-block hov">Submit</button>

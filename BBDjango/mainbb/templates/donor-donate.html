@@ -2,6 +2,7 @@
 {% block title %} Donate Now {% endblock %}
 
 {% block content %}
+
 <div class="container marginn">
     {% if messages %}
         <ul class="messages">
@@ -21,8 +22,10 @@
                         {% csrf_token %}        
                         <div class="form-row">
                             <div class="form-group col-md-5">
+                                {%if user.is_authenticated %}
                                 <label for="username">Username</label>
-                                <input type="text" name ="username" class="form-control" id="inputname" value="mema" placeholder="Enter your username" readonly>
+                                <input type="text" name ="username" class="form-control" value={{user.username}} id="getusername" placeholder="Enter your username" readonly>
+                               
                             </div>
 
                             <div class="form-group col-md-6">
@@ -31,8 +34,9 @@
                             </div>
                             <div class="form-group col-md-5">
                                 <label for="fullname">Full Name</label>
-                                <input type="text" name ="fullname" class="form-control" id="inputname" placeholder="Enter your name" required>
+                                <input type="text" name ="fullname" class="form-control" id="inputname" value={{user.last_name}},{{user.first_name}} placeholder="Enter your name" readonly>
                             </div>
+                            {%endif%}
                             <div class="form-group col-md-2">
                                 <label for="age">Age</label>
                                 <input type="text" name ="age" class="form-control" id="inputage" placeholder="Must 16 and above"required>
@@ -60,12 +64,6 @@
                             <div class="form-group col-md-4">
                                 <label for="disease">Diseases (if any)</label>
                                 <input type="text" name="disease" class="form-control" id="inputdisease" placeholder="Type N/A if no diseases">
-                            </div>
-                            
-
-                            <div class="form-group col-md-2">
-                                <label for="unit">Unit (per Bag)</label>
-                                <input type="text" name="unit" class="form-control" id="inputunit" placeholder="Ex.2 bags">
                             </div>
                             <div class="form-group col-md-2">
                                 <label for="bloodtype">Blood Type</label>
