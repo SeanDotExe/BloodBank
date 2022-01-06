@@ -14,15 +14,18 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.views import PasswordChangeView
 from django.urls import reverse_lazy
 
-
 class PasswordsChangeView(PasswordChangeView):
-  form_class = PasswordChangingForm
+    form_class = PasswordChangingForm
 
-  success_url = reverse_lazy('pw_success')
+    success_url = reverse_lazy('pw_success')
+  
 
 @login_required(login_url='index')
 def pw_success(request):
-  return render(request, "pw-success.html",{})
+  if request.user.is_authenticated and request.user.is_superuser:
+    return render(request, "pw-success.html",{})
+  else:
+    return redirect('index')
 
 
 
@@ -85,70 +88,80 @@ def index(request):
 
 @login_required(login_url='index')
 def donor_home(request):
-  return render(request,"donor-home.html")
+  if request.user.is_authenticated and request.user.is_superuser:
+    return render(request,"donor-home.html")
+  else:
+    return redirect('index')
 
 
 
 @login_required(login_url='index')
 def donor_donate(request):
+  if request.user.is_authenticated and request.user.is_superuser:
   
-  formdonate = add_donate(request.POST or None) 
-  if formdonate.is_valid():
-    
-    formdonate.save()
-    
-    messages.success(request, "Form successfully submitted")
-  context1 = {'formdonate': formdonate}
-  return render(request,"donor-donate.html",context1)
-
+    formdonate = add_donate(request.POST or None) 
+    if formdonate.is_valid():
+      
+      formdonate.save()
+      
+      messages.success(request, "Form successfully submitted")
+    context1 = {'formdonate': formdonate}
+    return render(request,"donor-donate.html",context1)
+  else:
+    return redirect('index')
 
 
 @login_required(login_url='index')
 def donor_request(request):
-  formrequest = add_need(request.POST or None)
-  if formrequest.is_valid():
-    formrequest.save()
-    user = User.objects.get(username=request.user.username)
-    print(user)
-    messages.success(request, "Form successfully submitted")
-  context2 = {'formrequest': formrequest}
-  return render(request,"donor-request.html", context2)
-
+  if request.user.is_authenticated and request.user.is_superuser:
+    formrequest = add_need(request.POST or None)
+    if formrequest.is_valid():
+      formrequest.save()
+      user = User.objects.get(username=request.user.username)
+      print(user)
+      messages.success(request, "Form successfully submitted")
+    context2 = {'formrequest': formrequest}
+    return render(request,"donor-request.html", context2)
+  else:
+    return redirect('index')
 
 
 
 
 @login_required(login_url='index')
 def donor_account(request):
-  user1 = User.objects.get(username=request.user.username)
-  donate_history_db = add_reqdonate.objects.filter(username = user1)
-  need_history_db = add_reqblood.objects.filter(username = user1)
-  count_req_need= add_reqblood.objects.filter(status = "Request Sent",username = user1).count()
-  count_req_donor= add_reqdonate.objects.filter(status = "Request Sent",username = user1).count()
-  count_req_total = count_req_need+ count_req_donor
+  if request.user.is_authenticated and request.user.is_superuser:
+    user1 = User.objects.get(username=request.user.username)
+    donate_history_db = add_reqdonate.objects.filter(username = user1)
+    need_history_db = add_reqblood.objects.filter(username = user1)
+    count_req_need= add_reqblood.objects.filter(status = "Request Sent",username = user1).count()
+    count_req_donor= add_reqdonate.objects.filter(status = "Request Sent",username = user1).count()
+    count_req_total = count_req_need+ count_req_donor
 
-  count_pending_need= add_reqblood.objects.filter(status = "Pending",username = user1).count()
-  count_pending_donor= add_reqdonate.objects.filter(status = "Pending",username = user1).count()
-  count_pending_total = count_pending_need+ count_pending_donor
-    
-  count_reject_need= add_reqblood.objects.filter(status = "Reject",username = user1).count()
-  count_reject_donor= add_reqdonate.objects.filter(status = "Reject",username = user1).count()
-  count_reject_total = count_reject_need+ count_reject_donor
+    count_pending_need= add_reqblood.objects.filter(status = "Pending",username = user1).count()
+    count_pending_donor= add_reqdonate.objects.filter(status = "Pending",username = user1).count()
+    count_pending_total = count_pending_need+ count_pending_donor
+      
+    count_reject_need= add_reqblood.objects.filter(status = "Reject",username = user1).count()
+    count_reject_donor= add_reqdonate.objects.filter(status = "Reject",username = user1).count()
+    count_reject_total = count_reject_need+ count_reject_donor
 
-  count_approved_need= add_reqblood.objects.filter(status = "Approved",username = user1).count()
-  count_approved_donor= add_reqdonate.objects.filter(status = "Approved",username = user1).count()
-  count_approved_total = count_approved_need+ count_approved_donor
+    count_approved_need= add_reqblood.objects.filter(status = "Approved",username = user1).count()
+    count_approved_donor= add_reqdonate.objects.filter(status = "Approved",username = user1).count()
+    count_approved_total = count_approved_need+ count_approved_donor
 
 
-  getdata ={
-    'donate_data': donate_history_db,
-    'need_data': need_history_db,
-    'count_req_total': count_req_total,
-    'count_pending_total': count_pending_total,
-    'count_reject_total': count_reject_total,
-    'count_approved_total': count_approved_total
-    }
-  return render(request,"donor-account.html",getdata)
+    getdata ={
+      'donate_data': donate_history_db,
+      'need_data': need_history_db,
+      'count_req_total': count_req_total,
+      'count_pending_total': count_pending_total,
+      'count_reject_total': count_reject_total,
+      'count_approved_total': count_approved_total
+      }
+    return render(request,"donor-account.html",getdata)
+  else:
+    return redirect('index')
 
 
 def logoutUser1(request):
