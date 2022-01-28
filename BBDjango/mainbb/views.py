@@ -22,7 +22,7 @@ class PasswordsChangeView(PasswordChangeView):
 
 @login_required(login_url='index')
 def pw_success(request):
-  if request.user.is_authenticated and request.user.is_superuser:
+  if request.user.is_authenticated:
     return render(request, "pw-success.html",{})
   else:
     return redirect('index')
@@ -88,7 +88,7 @@ def index(request):
 
 @login_required(login_url='index')
 def donor_home(request):
-  if request.user.is_authenticated and request.user.is_superuser:
+  if request.user.is_authenticated:
     return render(request,"donor-home.html")
   else:
     return redirect('index')
@@ -97,7 +97,7 @@ def donor_home(request):
 
 @login_required(login_url='index')
 def donor_donate(request):
-  if request.user.is_authenticated and request.user.is_superuser:
+  if request.user.is_authenticated:
   
     formdonate = add_donate(request.POST or None) 
     if formdonate.is_valid():
@@ -113,7 +113,7 @@ def donor_donate(request):
 
 @login_required(login_url='index')
 def donor_request(request):
-  if request.user.is_authenticated and request.user.is_superuser:
+  if request.user.is_authenticated:
     formrequest = add_need(request.POST or None)
     if formrequest.is_valid():
       formrequest.save()
@@ -130,7 +130,7 @@ def donor_request(request):
 
 @login_required(login_url='index')
 def donor_account(request):
-  if request.user.is_authenticated and request.user.is_superuser:
+  if request.user.is_authenticated:
     user1 = User.objects.get(username=request.user.username)
     donate_history_db = add_reqdonate.objects.filter(username = user1)
     need_history_db = add_reqblood.objects.filter(username = user1)

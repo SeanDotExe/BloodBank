@@ -77,7 +77,7 @@ def defadminlogin(request):
 
 @login_required(login_url='adminlogin')
 def defadminaccess(request):
-  if request.user.is_authenticated and request.user.is_staff and request.user.is_superuser:
+  if request.user.is_authenticated and request.user.is_staff:
     apos_blood_count = blood_counter.objects.values_list('Apos', flat=True).get(pk=1)
     aneg_blood_count = blood_counter.objects.values_list('Aneg', flat=True).get(pk=1)
     bpos_blood_count = blood_counter.objects.values_list('Bpos', flat=True).get(pk=1)
@@ -103,7 +103,7 @@ def defadminaccess(request):
 
 @login_required(login_url='adminlogin')
 def defadmindonors(request):
-  if request.user.is_authenticated and request.user.is_staff and request.user.is_superuser:
+  if request.user.is_authenticated and request.user.is_staff:
     count_requests= add_reqdonate.objects.filter(status = "Request Sent").count()
     count_pending= add_reqdonate.objects.filter(status = "Pending").count()
     count_approved= add_reqdonate.objects.filter(status = "Approved").count()
@@ -130,7 +130,7 @@ def defadmindonors(request):
 
 @login_required(login_url='adminlogin')
 def defadminpatient(request):
-  if request.user.is_authenticated and request.user.is_staff and request.user.is_superuser:
+  if request.user.is_authenticated and request.user.is_staff:
     needblood = add_reqblood.objects.filter(status = "Request Sent")
     apos_blood_count = blood_counter.objects.values_list('Apos', flat=True).get(pk=1)
     aneg_blood_count = blood_counter.objects.values_list('Aneg', flat=True).get(pk=1)
@@ -162,7 +162,7 @@ def defadminpatient(request):
 
 @login_required(login_url='adminlogin')
 def defpatientreject(request,id):
-  if request.user.is_authenticated and request.user.is_staff and request.user.is_superuser:
+  if request.user.is_authenticated and request.user.is_staff:
     patient_info = add_reqblood.objects.get(id=id)
     patientform = patientrejectform(request.POST or None, instance=patient_info)
     context = {
@@ -182,7 +182,7 @@ def defpatientreject(request,id):
 
 @login_required(login_url='adminlogin')
 def defdonorreject(request,id):
-  if request.user.is_authenticated and request.user.is_staff and request.user.is_superuser:
+  if request.user.is_authenticated and request.user.is_staff:
     donor_info = add_reqdonate.objects.get(id=id)
     donorform = donorrejectform(request.POST or None, instance=donor_info)
     context = {
@@ -200,7 +200,7 @@ def defdonorreject(request,id):
 
 @login_required(login_url='adminlogin')
 def defdonorapproved_screening(request,id):
-  if request.user.is_authenticated and request.user.is_staff and request.user.is_superuser:
+  if request.user.is_authenticated and request.user.is_staff:
     donor_info = add_reqdonate.objects.get(id=id)
     donorform = donor_approved_screening_form(request.POST or None, instance=donor_info)
     context = {
@@ -218,7 +218,7 @@ def defdonorapproved_screening(request,id):
 
 @login_required(login_url='adminlogin')
 def defdonor_screening(request,id):
-  if request.user.is_authenticated and request.user.is_staff and request.user.is_superuser:
+  if request.user.is_authenticated and request.user.is_staff:
     donor_info = add_reqdonate.objects.get(id=id)
     apos_blood_count = blood_counter.objects.values_list('Apos', flat=True).get(pk=1)
     aneg_blood_count = blood_counter.objects.values_list('Aneg', flat=True).get(pk=1)
@@ -270,7 +270,7 @@ def defdonor_screening(request,id):
 
 @login_required(login_url='adminlogin')
 def defpatientapproved(request,id):
-  if request.user.is_authenticated and request.user.is_staff and request.user.is_superuser:
+  if request.user.is_authenticated and request.user.is_staff:
     apos_blood_count = blood_counter.objects.values_list('Apos', flat=True).get(pk=1)
     aneg_blood_count = blood_counter.objects.values_list('Aneg', flat=True).get(pk=1)
     bpos_blood_count = blood_counter.objects.values_list('Bpos', flat=True).get(pk=1)
