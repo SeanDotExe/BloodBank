@@ -12,7 +12,7 @@
             <div class="card">
                 <div class="card-body">
                     <form action = "" method="POST">
-                        {% csrf_token %}       
+                        {% csrf_token %}
                         <div class="form-row">
                             <div class="form-group col-md-4">
                                 <label for="id">ID</label>
@@ -28,75 +28,14 @@
                             </div>
                             <div class="form-group col-md-4">
                                 <label for="bloodtype">Compatible Blood Types</label>
+                                <select name ="bloodtype" id="inputbloodt"  class="form-control"required>
 
-                                {% if patient.bloodtype == "O+" %}
-                                <select name ="bloodtype" id="inputbloodt"  class="form-control">
                                     <option selected>{{patient.bloodtype}}</option>
-                                    <option>O+</option>
-                                    <option>O-</option>
-                                </select>
-
-                                {% elif patient.bloodtype == "O-" %}
-                                <select name ="bloodtype" id="inputbloodt"  class="form-control">
-                                    <option selected>{{patient.bloodtype}}</option>
-                                    <option>O-</option>
+                                    {% for i in mlist %}
+                                    <option>{{i}}</option>
+                                    {% endfor %}
                                 </select>
 
-                                {% elif patient.bloodtype == "A+" %}
-                                <select name ="bloodtype" id="inputbloodt"  class="form-control">
-                                    <option selected>{{patient.bloodtype}}</option>
-                                    <option>O-</option>
-                                    <option>O+</option>
-                                    <option>A-</option>
-                                    <option>A+</option>
-                                </select>
-                                
-                                {% elif patient.bloodtype == "A-" %}
-                                <select name ="bloodtype" id="inputbloodt"  class="form-control">
-                                    <option selected>{{patient.bloodtype}}</option>
-                                    <option>O-</option>
-                                    <option>A-</option>
-                                </select>
-                                {% elif patient.bloodtype == "B+" %}
-                                <select name ="bloodtype" id="inputbloodt"  class="form-control">
-                                    <option selected>{{patient.bloodtype}}</option>
-                                    <option>O-</option>
-                                    <option>O+</option>
-                                    <option>B-</option>
-                                    <option>B+</option>
-                                    
-                                </select>
-
-                                {% elif patient.bloodtype == "B-" %}
-                                <select name ="bloodtype" id="inputbloodt"  class="form-control">
-                                    <option selected>{{patient.bloodtype}}</option>
-                                    <option>O-</option>
-                                    <option>B-</option>
-                                    
-                                </select>
-                                {% elif patient.bloodtype == "AB+" %}
-                                <select name ="bloodtype" id="inputbloodt"  class="form-control">
-                                    <option selected>{{patient.bloodtype}}</option>
-                                    <option>O-</option>
-                                    <option>O+</option>
-                                    <option>A-</option>
-                                    <option>A+</option>
-                                    <option>B-</option>
-                                    <option>B+</option>
-                                    <option>AB-</option>
-                                    <option>AB+</option>
-                                    
-                                </select>
-                                {% elif patient.bloodtype == "AB-" %}
-                                <select name ="bloodtype" id="inputbloodt"  class="form-control">
-                                    <option selected>{{patient.bloodtype}}</option>
-                                    <option>O-</option>
-                                    <option>A-</option>
-                                    <option>B-</option>
-                                    <option>AB-</option>
-                                    
-                                </select>
-                                {%endif%}        
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="diseases">Diseases</label>
@@ -116,12 +55,12 @@
                                     <option>Approved</option>
                                 </select>
                             </div>
-                            
+
                         </div>
                         <div class="form-row">
                             <div class="form-outline col-lg-10">
                                 <label class="form-label" for="form6Example7">Remarks</label>
-                                <textarea class="form-control" id="form6Example7" name ="remarks" rows="5" value="{{patient.remarks}}" placeholder="Type the reason why the Patient is rejected Here" required></textarea>
+                                <textarea class="form-control" id="form6Example7" name ="remarks" rows="5" value="{{patient.remarks}}" placeholder="Type here to notify the patient" required></textarea>
                             </div>
                               </div>
                         <button type="submit" class="btn btn-success btn-block hov">Approved</button>

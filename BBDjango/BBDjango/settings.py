@@ -25,9 +25,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '!)r=lgyv4^qn918c2vid1e92)!b23l1k9kmfmnr!$4jobx3*1p'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['bloodbanksystem.pythonanywhere.com']
 
 
 # Application definition
@@ -49,6 +49,7 @@ MIDDLEWARE = [
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
@@ -85,13 +86,10 @@ DATABASES = {
     'default' :{
 
         'ENGINE':'django.db.backends.mysql',
-        'NAME':'db_bloodbank',
-        'USER' : 'root',
-        'PASSWORD':'',
-        'HOST':'localhost',
-        'OPTIONS': {
-            'init_command': "SET sql_mode= 'STRICT_TRANS_TABLES'",
-        }
+        'NAME':'bloodbanksystem$db_bloodbank',
+        'USER' : 'bloodbanksystem',
+        'PASSWORD':'Elective#02',
+        'HOST':'bloodbanksystem.mysql.pythonanywhere-services.com',
     }
 }
 
@@ -131,7 +129,16 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
-
+STATIC_ROOT = '/home/bloodbanksystem/BloodBank/adminbb/static'
 STATIC_URL = '/static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+#EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'bbsystem1201@gmail.com'
+EMAIL_HOST_PASSWORD = 'admin1201'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'

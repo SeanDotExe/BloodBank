@@ -32,44 +32,57 @@
                             </div>
                             <div class="form-group col-md-5">
                                 <label for="inputAddress">Patient's Full Name</label>
-                                <input type="text" name="patientname" class="form-control" id="inputname" placeholder="Enter patient's name">
+                                <input type="text" name="patientname" class="form-control" id="inputname" placeholder="Enter patient's name" required>
                             </div>
                             <div class="form-group col-md-2">
                                 <label for="inputage">Patient's Age</label>
-                                <input type="text" name="patientage" class="form-control" id="inputage" placeholder="Enter patient's age ">
+                                <input type="number" name="patientage" min = "1" max = "130" class="form-control" id="inputage" placeholder="Enter patient's age " required>
                             </div>
                             <div class="form-group col-md-2">
                                 <label for="sex">Sex</label>
-                                <select name ="sex" id="inputbloodt" class="form-control">
-                                    <option selected disabled = "true">Choose...</option>
+                                <select name ="sex" id="inputbloodt" class="form-control" required>
+                                    <option selected disabled = "true" value = "">Choose...</option>
                                     <option>Male</option>
                                     <option>Female</option>
                                 </select>
                             </div>
                             <div class="form-group col-md-4">
                                 <label for="inputhf">Health Facility</label>
-                                <input type="text" name="healthfac" class="form-control" id="inputhf" placeholder="Enter patient's health facility or type home if patient's at home">
+                                <input type="text" name="healthfac" class="form-control" id="inputhf" placeholder="Enter patient's health facility or type home if patient's at home" required>
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="inputAddress">Health Facility Address</label>
-                                <input type="text" name="healthfacadd" class="form-control" id="inputAddress" placeholder="Enter health facility address or home address if patient's at home">
+                                <input type="text" name="healthfacadd" class="form-control" id="inputAddress" placeholder="Enter health facility address or home address if patient's at home" required>
                             </div>
                             <div class="form-group col-md-2">
                                 <label for="inputmn">Mobile Number</label>
-                                <input type="text" name="contactnum" class="form-control" id="inputmn" placeholder="Ex.09123456789">
+                                <input type="text" pattern="^(\d{11})$"  name="contactnum" class="form-control" id="inputmn" placeholder="Ex.09123456789" required>
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="inputdisease">Reason/Diseases (if any)</label>
-                                <input type="text" name="disease" class="form-control" id="inputdisease" placeholder="Type N/A if no diseases">
+                                <input type="text" name="disease" class="form-control" id="inputdisease" placeholder="Type N/A if no diseases" required>
                             </div>
                             <div class="form-group col-md-2">
-                                <label for="inputunit">Unit (per Bag)</label>
-                                <input type="text" name="unit" class="form-control" id="inputunit" placeholder="Ex.2 bags">
+                                <label for="inputbt">Unit</label>
+                                <select id="inputbloodt" name="unit" class="form-control" required>
+                                    <option selected>1</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                    <option>4</option>
+                                    <option>5</option>
+                                    <option>6</option>
+                                    <option>7</option>
+                                    <option>8</option>
+                                    <option>9</option>
+                                    <option>10</option>
+                                    <option>11</option>
+                                    <option>12</option>
+                                </select>
                             </div>
                             <div class="form-group col-md-2">
                                 <label for="inputbt">Blood Type</label>
-                                <select id="inputbloodt" name="bloodtype" class="form-control">
-                                    <option selected>Choose...</option>
+                                <select id="inputbloodt" name="bloodtype" class="form-control" required>
+                                    <option selected value= "">Choose...</option>
                                     <option>A+</option>
                                     <option>A-</option>
                                     <option>B+</option>

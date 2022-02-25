@@ -4,7 +4,7 @@
 from django.contrib.messages.api import success
 from django.shortcuts import render,redirect
 from django.http import HttpResponse, request
-from .models import reg_donor_patient,add_reqdonate,add_reqblood
+from .models import reg_donor_patient,add_reqdonate,add_reqblood,blood_counter
 from .forms import registration_form,donate_remarks,need_remarks,add_donate,add_need,register,PasswordChangingForm
 from operator import itemgetter
 from django.contrib import messages
@@ -18,7 +18,7 @@ class PasswordsChangeView(PasswordChangeView):
     form_class = PasswordChangingForm
 
     success_url = reverse_lazy('pw_success')
-  
+
 
 @login_required(login_url='index')
 def pw_success(request):
@@ -28,8 +28,22 @@ def pw_success(request):
     return redirect('index')
 
 
+@login_required(login_url='index')
+def pending(request):
+  if request.user.is_authenticated:
+    return render(request, "pending.html")
+  else:
+    return redirect('index')
 
-  
+
+@login_required(login_url='index')
+def req_sent(request):
+  if request.user.is_authenticated:
+    return render(request, "req_sent.html")
+  else:
+    return redirect('index')
+
+
 def user_reg(request):
   form = register()
   if request.method == 'POST':
@@ -43,7 +57,7 @@ def user_reg(request):
       #if User.objects.filter(username=uservalue).exists():
       form.save()
       messages.success(request, "Successfully Registered Please click 'Home' at the Menu Panel to Login")
-          
+
       #else:
        # messages.info(request,"Username already taken, Please fillout another username")
     else:
@@ -67,7 +81,7 @@ def user_reg(request):
 def index(request):
       if request.method == 'POST':
         userr = request.POST.get('username')
-        pw = request.POST.get('password') 
+        pw = request.POST.get('password')
         selected_project_user = {'username':userr}
         user = authenticate(request, username=userr,password=pw)
         if user is not None and user.is_staff == False:
@@ -77,7 +91,7 @@ def index(request):
         else:
           print("dito sya pumasok")
           messages.info(request,'Invalid Credentials')
-        
+
       context = {}
 
       return render(request, 'index.html',context)
@@ -98,14 +112,18 @@ def donor_home(request):
 @login_required(login_url='index')
 def donor_donate(request):
   if request.user.is_authenticated:
-  
-    formdonate = add_donate(request.POST or None) 
+    user1 = User.objects.get(username=request.user.username)
+    count_req= add_reqdonate.objects.filter(status = "Request Sent",username = user1).count()
+    count_pen= add_reqdonate.objects.filter(status = "Pending",username = user1).count()
+    ctotal = count_req+count_pen
+    #donate_history_db = add_reqdonate.objects.filter(username = user1)
+    #need_history_db = add_reqblood.objects.filter(username = user1)
+    formdonate = add_donate(request.POST or None)
     if formdonate.is_valid():
-      
-      formdonate.save()
-      
-      messages.success(request, "Form successfully submitted")
-    context1 = {'formdonate': formdonate}
+        formdonate.save()
+        messages.success(request, "Form successfully submitted")
+        return redirect("donor_account")
+    context1 = {'formdonate': formdonate,"ctotal":ctotal}
     return render(request,"donor-donate.html",context1)
   else:
     return redirect('index')
@@ -120,6 +138,7 @@ def donor_request(request):
       user = User.objects.get(username=request.user.username)
       print(user)
       messages.success(request, "Form successfully submitted")
+
     context2 = {'formrequest': formrequest}
     return render(request,"donor-request.html", context2)
   else:
@@ -141,7 +160,7 @@ def donor_account(request):
     count_pending_need= add_reqblood.objects.filter(status = "Pending",username = user1).count()
     count_pending_donor= add_reqdonate.objects.filter(status = "Pending",username = user1).count()
     count_pending_total = count_pending_need+ count_pending_donor
-      
+
     count_reject_need= add_reqblood.objects.filter(status = "Reject",username = user1).count()
     count_reject_donor= add_reqdonate.objects.filter(status = "Reject",username = user1).count()
     count_reject_total = count_reject_need+ count_reject_donor
@@ -160,6 +179,7 @@ def donor_account(request):
       'count_approved_total': count_approved_total
       }
     return render(request,"donor-account.html",getdata)
+
   else:
     return redirect('index')
 
@@ -171,7 +191,7 @@ def logoutUser1(request):
 
 #def defadminlogin(request):
 #  return render(request,"adminlogin.html")
-  
+
 #def defadminlogin2(request):
 #  return render(request,"adminlogin.html")
 

@@ -1,5 +1,5 @@
 from django.urls import path
-
+#from .views import PasswordsChangeView
 from . import views
 
 urlpatterns = [
@@ -13,6 +13,9 @@ urlpatterns = [
   path('donor_reject/<id>/', views.defdonorreject, name='donor_reject'),
   path('donor_approved_for_screening/<id>/', views.defdonorapproved_screening, name='donor_approved_for_screening'),
   path('donor_screening/<id>/', views.defdonor_screening, name='donor_screening'),
+  path('donor_history/<id>/', views.defdonor_history, name='donor_history'),
+  path('patient_history/<id>/', views.defpatient_history, name='patient_history'),
+
   path('adminregister.html', views.defregister, name='adminregister'),
   path('logout', views.logoutUser, name="logout"),
  # path('patient_approved/<id>/', views.defpatientapproved, name='donor_approved'),

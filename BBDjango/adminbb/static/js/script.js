@@ -9,7 +9,3 @@ $( document ).ready(function() {
 
 
 })
-function changestat(){
-    Document.getElementById('stat').type = "Reject";
-
-}

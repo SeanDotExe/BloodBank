@@ -17,7 +17,7 @@
                         Requests <br>
 
                        <span>{{count_requests}}</span>
-                    </div>                            
+                    </div>
                 </div>
             </div>
         </div>
@@ -31,7 +31,7 @@
                     <div>
                         Donors for Screening <br>
                         <span id = number_of_requests>{{count_pending}}</span>
-                    </div>                            
+                    </div>
                 </div>
             </div>
         </div>
@@ -39,11 +39,12 @@
 </div>
 
 <div class="container marginn">
-    <div id="pending_donor" class="table-responsive text-nowrap">
         <div class="card-header green">
             Pending Donors
         </div>
-        <table id="tableaccessrequest" class = "table table-hover table-sm" >
+    <div id="pending_donor" class="table-responsive text-nowrap">
+         <input class="form-control" id="search_donor_request" onkeyup="searchstream_donor_screening()" type="text" placeholder="Filter Search Names..." aria-label="Search">
+        <table id="table_screening" class = "table table-hover table-sm" >
             <thead class="black white-text">
                 <tr>
 
@@ -75,20 +76,27 @@
 
                     </tr>
 
-                    
+
                 {%endfor%}
 
             </tbody>
         </table>
 
+
+
+<br>
+<br>
+<br>
+<br>
         <div id="pending_donor" class="table-responsive text-nowrap">
             <div class="card-header green">
                 Incoming Donors
             </div>
-            <table id="tableaccessrequest" class = "table table-hover table-sm" >
+            <input class="form-control" id="search_donor_request" onkeyup="searchstream_donor_request()" type="text" placeholder="Filter Search Names..." aria-label="Search">
+            <table id="table_donor_request" class = "table table-hover table-sm" >
                 <thead class="black white-text">
                     <tr>
-    
+
                         <th class="text-center" style="color: white;" scope = "col">ID</th>
                         <th class="text-center" style="color: white;" scope = "col">Fullname</th>
                         <th class="text-center" style="color: white;" scope = "col">Weight(kgs)</th>
@@ -96,12 +104,14 @@
                         <th class="text-center" style="color: white;" scope = "col">Blood Type</th>
                         <th class="text-center" style="color: white;" scope = "col">Diseases(if any)</th>
                         <th class="text-center" style="color: white;" scope = "col">Date Registered</th>
+                        <th class="text-center" style="color: white;" colspan = "1" scope = "col">History</th>
                         <th class="text-center" style="color: white;" colspan="2" scope = "col">Decision</th>
                     </tr>
                 </thead>
 
+
                 <tbody>
-    
+
                     {% for dnr in donor %}
                     <tr class = "text-center">
                         <td>{{dnr.id}}</td>
@@ -111,24 +121,70 @@
                         <td>{{dnr.bloodtype}}</td>
                         <td>{{dnr.disease}}</td>
                         <td>{{dnr.date_request}}</td>
-            
+                        <center>
+                            <td class="text-center">
+                            <a href="{% url 'donor_history' dnr.id %}" target = "_blank" class="btn badge-info p-2">View</a>
+                            </td>
+                        </center>
                         <center>
                             <td class="text-center">
                             <a href="{% url 'donor_approved_for_screening' dnr.id %}" class="btn badge-success p-2">Accept</a>
                             <a href="{% url 'donor_reject' dnr.id %}" class="btn badge-danger p-2" >Reject</a>
                             </td>
                         </center>
-    
+
                         </tr>
 
 
                         {%endfor%}
-    
+
                 </tbody>
             </table>
         </div>
     </div>
     </div>
 
+<script>
 
+function searchstream_donor_screening(){
+    //var getsearch;
+    var input, filter, table, tr, td, i, txtValue;
+    input = document.getElementById("search_donor_request");
+    filter = input.value.toUpperCase();
+    table = document.getElementById("table_screening");
+    tr = table.getElementsByTagName("tr");
+    for (i = 0; i < tr.length; i++) {
+      td = tr[i].getElementsByTagName("td")[1];
+      if (td) {
+        txtValue = td.textContent || td.innerText;
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+          tr[i].style.display = "";
+        } else {
+          tr[i].style.display = "none";
+        }
+      }
+    }
+
+
+}
+function searchstream_donor_request(){
+    //var getsearch;
+    var input, filter, table, tr, td, i, txtValue;
+    input = document.getElementById("search_donor_request");
+    filter = input.value.toUpperCase();
+    table = document.getElementById("table_donor_request");
+    tr = table.getElementsByTagName("tr");
+    for (i = 0; i < tr.length; i++) {
+      td = tr[i].getElementsByTagName("td")[1];
+      if (td) {
+        txtValue = td.textContent || td.innerText;
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+          tr[i].style.display = "";
+        } else {
+          tr[i].style.display = "none";
+        }
+      }
+    }
+}
+</script>
 {% endblock %}

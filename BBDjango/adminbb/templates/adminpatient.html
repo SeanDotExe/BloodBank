@@ -4,11 +4,12 @@
 
 {% block content %}
     <div class="container marginn">
-    <div id="patient" class="table-responsive text-nowrap">
-        <div class="card-header green">
+                <div class="card-header green">
             Patient Blood Requests
         </div>
-        <table id="tableaccessrequest" class = "table table-hover table-sm" >
+    <div id="pending_donor" class="table-responsive text-nowrap">
+        <input class="form-control" id="search_patient" onkeyup="searchstream_patient()" type="text" placeholder="Filter Search Names..." aria-label="Search">
+        <table id="table_patient" class = "table table-hover table-sm" >
             <thead class="black white-text">
                 <tr>
 
@@ -20,10 +21,10 @@
                     <th class="text-center" style="color: white;" scope = "col">Diseases</th>
                     <th class="text-center" style="color: white;" scope = "col">Contact Number</th>
                     <th class="text-center" style="color: white;" scope = "col">Health Facility</th>
-                    <th class="text-center" style="color: white;" colspan="2" scope = "col">DECISION</th>
+                    <th class="text-center" style="color: white;" colspan="1" scope = "col">History</th>
+                    <th class="text-center" style="color: white;" colspan="2" scope = "col">{{leng}}</th>
                 </tr>
             </thead>
-
             <tbody>
 
                 {% for nd in needblood %}
@@ -37,18 +38,44 @@
                     <td>{{nd.contactnum}}</td>
                     <td>{{nd.healthfac}}</td>
                     <td class="text-center">
+                        <a href="{% url 'patient_history' nd.id %}" target = "_blank" class="btn badge-info p-2">View</a>
+                    </td>
+                    <td class="text-center">
                         <a href="{% url 'patient_approved' nd.id %}" class="btn badge-success p-2">Accept</a>
                         <a href="{% url 'patient_reject' nd.id %}" class="btn badge-danger p-2" >Reject</a>
                     </td>
                 </tr>
-                {%endfor%}    
+                {%endfor%}
             </tbody>
         </table>
 
     </div>
     </div>
+<script>
 
+function searchstream_patient(){
+    //var getsearch;
+    var input, filter, table, tr, td, i, txtValue;
+    input = document.getElementById("search_patient");
+    filter = input.value.toUpperCase();
+    table = document.getElementById("table_patient");
+    tr = table.getElementsByTagName("tr");
+    for (i = 0; i < tr.length; i++) {
+      td = tr[i].getElementsByTagName("td")[1];
+      if (td) {
+        txtValue = td.textContent || td.innerText;
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+          tr[i].style.display = "";
+        } else {
+          tr[i].style.display = "none";
+        }
+      }
+    }
+
+
+}
+</script>
 <br><br><br><br><br><br>
 
-  
+
   {% endblock %}

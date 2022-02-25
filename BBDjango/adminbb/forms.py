@@ -3,7 +3,7 @@ from .models import reg_admin
 from mainbb.models import add_reqblood,add_reqdonate
 from django import forms
 from django.contrib.auth.models import User
-from django.contrib.auth.forms import PasswordChangeForm, UserCreationForm
+from django.contrib.auth.forms import UserCreationForm
 
 
 class register(UserCreationForm):
@@ -37,7 +37,7 @@ class donor_approved_screening_form(forms.ModelForm):
         model = add_reqdonate
         fields = ['status','remarks']
 
-        
+
 class donor_screening_form(forms.ModelForm):
     class Meta:
         model = add_reqdonate

@@ -12,7 +12,7 @@
             <div class="card">
                 <div class="card-body">
                     <form action = "" method="POST">
-                        {% csrf_token %}       
+                        {% csrf_token %}
                         <div class="form-row">
                             <div class="form-group col-md-4">
                                 <label for="id">ID</label>
@@ -44,12 +44,12 @@
                                     <option>Pending</option>
                                 </select>
                             </div>
-                            
+
                         </div>
                         <div class="form-row">
                             <div class="form-outline col-lg-10">
                                 <label class="form-label" for="form6Example7">Remarks</label>
-                                <textarea class="form-control" id="form6Example7" name ="remarks" rows="5" value="{{donor.remarks}}" placeholder="Type the reason why the Patient is rejected Here" required></textarea>
+                                <textarea class="form-control" id="form6Example7" name ="remarks" rows="5" value="{{donor.remarks}}" placeholder="Type here to send a message to the donor" readonly> Please go to your respective clinic on {{dtoday}} at 11:00 am, Please do not be late, Thank you</textarea>
                             </div>
                               </div>
                         <button type="submit" class="btn btn-danger btn-block hov">Approved for Screening </button>

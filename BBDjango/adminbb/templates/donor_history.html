@@ -1,0 +1,65 @@
+{% extends "base_2.html" %}
+{% block title %} Donor History {% endblock %}
+
+
+{% block content %}
+
+
+<div class="container marginn">
+    <div id="pending_donor" class="table-responsive text-nowrap">
+            <div class="card-header green">
+               Donor History
+            </div>
+        <div id="pending_donor" class="table-responsive text-nowrap table-wrapper-sroll-y my-custom-scrollbar">
+
+            <table id="tableaccessrequest" class = "table table-hover table-sm" >
+                <thead class="black white-text">
+                    <tr>
+
+                        <th class="text-center" style="color: white;" scope = "col">ID</th>
+                        <th class="text-center" style="color: white;" scope = "col">Fullname</th>
+                        <th class="text-center" style="color: white;" scope = "col">Weight(kgs)</th>
+                        <th class="text-center" style="color: white;" scope = "col">Age</th>
+                        <th class="text-center" style="color: white;" scope = "col">Diseases</th>
+                        <th class="text-center" style="color: white;" scope = "col">Date Registered</th>
+                        <th class="text-center" style="color: white;" scope = "col">Status</th>
+                        <th class="text-center" style="color: white;" scope = "col">Remarks</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {% for pd in donor %}
+                    <tr class = "text-center">
+                        <td>{{pd.id}}</td>
+                        <td>{{pd.fullname}}</td>
+                        <td>{{pd.weight}}</td>
+                        <td>{{pd.age}}</td>
+                        <td>{{pd.disease}}</td>
+                        <td>{{pd.date_request}}</td>
+                        {% if pd.status == 'Approved' %}
+                            <td><span class="label success">{{pd.status}}</span></td>
+                        {% elif pd.status == 'Reject' %}
+                            <td><span class="label danger">{{pd.status}}</span></td>
+                        {% endif %}
+                        <td>{{pd.remarks}}</td>
+                        </center>
+
+                        </tr>
+                    {% endfor %}
+
+
+
+                </tbody>
+            </table>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+        </div>
+    </div>
+    </div>
+
+
+{% endblock %}

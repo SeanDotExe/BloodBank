@@ -151,8 +151,8 @@ body {
       .page-nav h2 {
         font-size: 26px; } }
 
-  
-    
+
+
   .page-nav ul li {
     float: left;
     margin-right: 10px;
@@ -576,6 +576,15 @@ footer {
 
 /*# sourceMappingURL=style.css.map */
 
+
+.my-custom-scrollbar {
+    position : relative;
+    height:300px;
+    overflow:auto;
+}
+.table-wrapper-scroll-y {
+    display:block;
+}
 
 /* ===================================== AdminSite ================================== */
 #aboutadmin {
