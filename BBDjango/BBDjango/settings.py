@@ -25,9 +25,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '!)r=lgyv4^qn918c2vid1e92)!b23l1k9kmfmnr!$4jobx3*1p'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['bloodbanksystem.pythonanywhere.com']
+ALLOWED_HOSTS = ['127.0.0.1','localhost']
 
 
 # Application definition
@@ -86,10 +86,14 @@ DATABASES = {
     'default' :{
 
         'ENGINE':'django.db.backends.mysql',
-        'NAME':'bloodbanksystem$db_bloodbank',
-        'USER' : 'bloodbanksystem',
-        'PASSWORD':'Elective#02',
-        'HOST':'bloodbanksystem.mysql.pythonanywhere-services.com',
+        'NAME':'db_bloodbank',
+        'USER' : 'root',
+        'PASSWORD':'',
+        'HOST':'localhost',
+        'PORT': '3306',
+        'OPTIONS': {
+            'init_command': "SET sql_mode= 'STRICT_TRANS_TABLES'",
+        }
     }
 }
 
